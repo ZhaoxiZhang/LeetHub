@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">LeetHub</string>
+    <string name="title_activity_question_detail">QuestionDetailActivity</string>
 </resources>

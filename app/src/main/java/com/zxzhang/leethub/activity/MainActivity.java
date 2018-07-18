@@ -1,25 +1,24 @@
-package com.zxzhang.leethub;
+package com.zxzhang.leethub.activity;
 
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
-import android.widget.ProgressBar;
 
 import com.daimajia.numberprogressbar.NumberProgressBar;
+import com.zxzhang.leethub.App;
+import com.zxzhang.leethub.DownloadTask;
+import com.zxzhang.leethub.R;
 import com.zxzhang.leethub.adapter.QuestionAdapter;
 import com.zxzhang.leethub.model.dao.Question;
-import com.zxzhang.leethub.model.dao.QuestionDao;
 import com.zxzhang.leethub.model.db.DBHelper;
-
-import org.greenrobot.greendao.query.QueryBuilder;
 
 import java.util.List;
 

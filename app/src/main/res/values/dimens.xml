@@ -1,0 +1,26 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+
+    <!--font size-->
+    <dimen name="font_24">24sp</dimen>
+    <dimen name="font_22">22sp</dimen>
+    <dimen name="font_20">20sp</dimen>
+    <dimen name="font_18">18sp</dimen>
+    <dimen name="font_12">12sp</dimen>
+
+    <!-- typical spacing between two views -->
+    <dimen name="spacing_40">40dp</dimen>
+    <dimen name="spacing_24">24dp</dimen>
+    <dimen name="spacing_14">14dp</dimen>
+    <dimen name="spacing_10">10dp</dimen>
+    <dimen name="spacing_4">4dp</dimen>
+
+    <!-- typical margin between two views-->
+    <dimen name="margin_20">20dp</dimen>
+    <dimen name="margin_10">10dp</dimen>
+    <dimen name="margin_6">6dp</dimen>
+    <dimen name="margin_4">4dp</dimen>
+
+    <!-- typical sizes of views -->
+    <dimen name="cardview_height_100">100dp</dimen>
+</resources>

@@ -1,32 +1,37 @@
 package com.zxzhang.leethub.model.dao;
 
 import org.greenrobot.greendao.annotation.Entity;
-import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
+import org.greenrobot.greendao.annotation.Id;
+
+import java.io.Serializable;
 
 @Entity
-public class Question {
+public class Question implements Serializable{
+    private static final long serialVersionUID = 1L;
     @Id(autoincrement = true)
     private Long id;
-    private int question_id;
+    private int frontend_question_id;
     private boolean article_live;
     private String article_slug;
     private String title;
     private String title_slug;
     private String description;
-    private int difficylty;
-    @Generated(hash = 1176142557)
-    public Question(Long id, int question_id, boolean article_live,
+    private String content;
+    private int difficulty;
+    @Generated(hash = 864797189)
+    public Question(Long id, int frontend_question_id, boolean article_live,
             String article_slug, String title, String title_slug,
-            String description, int difficylty) {
+            String description, String content, int difficulty) {
         this.id = id;
-        this.question_id = question_id;
+        this.frontend_question_id = frontend_question_id;
         this.article_live = article_live;
         this.article_slug = article_slug;
         this.title = title;
         this.title_slug = title_slug;
         this.description = description;
-        this.difficylty = difficylty;
+        this.content = content;
+        this.difficulty = difficulty;
     }
     @Generated(hash = 1868476517)
     public Question() {
@@ -34,8 +39,14 @@ public class Question {
     public Long getId() {
         return this.id;
     }
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
+    }
+    public int getFrontend_question_id() {
+        return this.frontend_question_id;
+    }
+    public void setFrontend_question_id(int frontend_question_id) {
+        this.frontend_question_id = frontend_question_id;
     }
     public boolean getArticle_live() {
         return this.article_live;
@@ -61,25 +72,23 @@ public class Question {
     public void setTitle_slug(String title_slug) {
         this.title_slug = title_slug;
     }
-    public int getDifficylty() {
-        return this.difficylty;
-    }
-    public void setDifficylty(int difficylty) {
-        this.difficylty = difficylty;
-    }
     public String getDescription() {
         return this.description;
     }
     public void setDescription(String description) {
         this.description = description;
     }
-    public void setId(Long id) {
-        this.id = id;
+    public String getContent() {
+        return this.content;
     }
-    public int getQuestion_id() {
-        return this.question_id;
+    public void setContent(String content) {
+        this.content = content;
     }
-    public void setQuestion_id(int question_id) {
-        this.question_id = question_id;
+    public int getDifficulty() {
+        return this.difficulty;
     }
+    public void setDifficulty(int difficulty) {
+        this.difficulty = difficulty;
+    }
+    
 }

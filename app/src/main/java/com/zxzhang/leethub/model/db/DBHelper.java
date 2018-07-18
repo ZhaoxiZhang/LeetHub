@@ -1,11 +1,9 @@
 package com.zxzhang.leethub.model.db;
 
 
-import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.zxzhang.leethub.App;
-import com.zxzhang.leethub.model.bean.QuestionsBean;
 import com.zxzhang.leethub.model.dao.DaoMaster;
 import com.zxzhang.leethub.model.dao.DaoSession;
 import com.zxzhang.leethub.model.dao.Question;
@@ -13,7 +11,6 @@ import com.zxzhang.leethub.model.dao.QuestionDao;
 
 import org.greenrobot.greendao.query.QueryBuilder;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class DBHelper {
@@ -66,6 +63,6 @@ public class DBHelper {
     public static List<Question>queryAllDataOfQuestion(){
         QuestionDao questionDao = DBHelper.getSingleton().getDaoSession().getQuestionDao();
         QueryBuilder queryBuilder = questionDao.queryBuilder();
-        return queryBuilder.orderAsc(QuestionDao.Properties.Question_id).list();
+        return queryBuilder.orderAsc(QuestionDao.Properties.Frontend_question_id).list();
     }
 }

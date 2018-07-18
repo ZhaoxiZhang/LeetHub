@@ -20,7 +20,7 @@ android {
     }
 }
 
-greendao{
+greendao {
     schemaVersion 1
 }
 
@@ -29,10 +29,9 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+
     compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    testCompile 'junit:junit:4.12'
-
     compile 'com.android.support:design:26.0.0-alpha1'
     compile 'com.android.support:recyclerview-v7:26.0.0-alpha1'
     compile 'com.android.support:cardview-v7:26.0.0-alpha1'
@@ -41,4 +40,5 @@ dependencies {
     compile 'org.greenrobot:greendao:3.2.2'
     compile 'org.jsoup:jsoup:1.11.3'
     compile 'com.daimajia.numberprogressbar:library:1.4@aar'
+    testCompile 'junit:junit:4.12'
 }
