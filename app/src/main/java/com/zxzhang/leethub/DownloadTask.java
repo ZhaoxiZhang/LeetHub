@@ -20,6 +20,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
 import java.io.IOException;
+import java.util.List;
 
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -41,7 +42,6 @@ public class DownloadTask extends AsyncTask<Void,Integer,Void> {
         super.onPreExecute();
         numberProgressBar.setVisibility(View.VISIBLE);
     }
-
 
     @Override
     protected Void doInBackground(Void... params) {
@@ -66,7 +66,6 @@ public class DownloadTask extends AsyncTask<Void,Integer,Void> {
         LeetQuestionBean questions = gson.fromJson(responseDate, LeetQuestionBean.class);
         int size = questions.getStat_status_pairs().size();
 
-        Document doc = null;
         for (int i = 0; i < size; i++) {
             Question question = new Question();
 
@@ -93,7 +92,7 @@ public class DownloadTask extends AsyncTask<Void,Integer,Void> {
                 //Log.d(TAG, "doInBackground: zyzhang " + csrftoken);
                 //Log.d(TAG, "doInBackground: zyzhang " + __cfduid);
 
-                String postBody = "query{question(titleSlug:\"" + questionStat.getQuestion__title_slug() + "\") {content}}";
+                String postBody = "query{question(titleSlug:\"" + questionStat.getQuestion__title_slug() + "\") {content topicTags {name}}}";
                 Request graphqlRequest = new Request.Builder()
                         .addHeader("Content-Type","application/graphql")
                         .addHeader("Referer","https://leetcode.com/problems/" + questionStat.getQuestion__title_slug())
@@ -107,14 +106,20 @@ public class DownloadTask extends AsyncTask<Void,Integer,Void> {
 
                 String graphqlResponseData = graphqlResponse.body().string();
 
-                //Log.d(TAG, "doInBackground: zyzhang " + graphqlResponseData);
-
                 LeetGraphqlQuestionBean leetGraphqlQuestionBean = gson.fromJson(graphqlResponseData,LeetGraphqlQuestionBean.class);
 
-                //Log.d(TAG, "doInBackground: zyzhang " + leetGraphqlQuestionBean.getData().getQuestionGraphql().getContent());
-
                 question.setContent(leetGraphqlQuestionBean.getData().getQuestionGraphql().getContent());
+                List<LeetGraphqlQuestionBean.DataBean.QuestionGraphqlBean.TopicTagsBean> topicTagsBeanList = leetGraphqlQuestionBean.getData().getQuestionGraphql().getTopicTags();
+                StringBuilder tags = new StringBuilder();
+                for (int j = 0;j < topicTagsBeanList.size();j++){
+                    if (j != topicTagsBeanList.size() - 1){
+                        tags.append(topicTagsBeanList.get(j).getName() + ", ");
+                    }else{
+                        tags.append(topicTagsBeanList.get(j).getName());
+                    }
+                }
 
+                question.setTags(tags.toString());
 //                String description = doc.select("meta[name=description]").first().attr("content");
 //                question.setDescription(description);
             } catch (IOException e) {

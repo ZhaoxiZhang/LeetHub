@@ -27,11 +27,13 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHo
         View questionView;
         TextView questionNumber;
         TextView questionTitle;
+        TextView questionDifficulty;
         public ViewHolder(View view){
             super(view);
             questionView = view;
-            questionNumber = (TextView)view.findViewById(R.id.question_number);
-            questionTitle = (TextView)view.findViewById(R.id.question_title);
+            questionNumber = (TextView)view.findViewById(R.id.tv_question_number);
+            questionTitle = (TextView)view.findViewById(R.id.tv_question_title);
+            questionDifficulty = (TextView)view.findViewById(R.id.tv_question_difficulty);
         }
     }
 
@@ -66,6 +68,19 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHo
         holder.questionNumber.setText(String.valueOf(question.getFrontend_question_id()));
         Log.d(TAG, "onBindViewHolder: " + question.getTitle());
         holder.questionTitle.setText(question.getTitle());
+        int difficulty = question.getDifficulty();
+            switch (difficulty){
+                case 1:
+                    holder.questionDifficulty.setText("Easy");
+                    break;
+                case 2:
+                    holder.questionDifficulty.setText("Medium");
+                    break;
+                case 3:
+                    holder.questionDifficulty.setText("Hard");
+                    break;
+                default:
+            }
     }
 
     @Override

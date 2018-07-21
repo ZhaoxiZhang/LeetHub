@@ -6,6 +6,7 @@
     <dimen name="font_22">22sp</dimen>
     <dimen name="font_20">20sp</dimen>
     <dimen name="font_18">18sp</dimen>
+    <dimen name="font_16">16sp</dimen>
     <dimen name="font_12">12sp</dimen>
 
     <!-- typical spacing between two views -->
@@ -23,4 +24,8 @@
 
     <!-- typical sizes of views -->
     <dimen name="cardview_height_100">100dp</dimen>
+    <dimen name="button_height_50">50dp</dimen>
+    <dimen name="button_height_48">48dp</dimen>
+    <dimen name="button_height_36">36dp</dimen>
+    <dimen name="button_width_88">88dp</dimen>
 </resources>

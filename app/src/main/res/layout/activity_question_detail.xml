@@ -1,44 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/md_white_1000"
     tools:context="com.zxzhang.leethub.activity.QuestionDetailActivity">
 
-    <LinearLayout
+    <include layout="@layout/toolbar" />
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <include layout="@layout/toolbar" />
-
-
+        android:layout_height="0dp"
+        android:layout_weight="9"
+        android:fadingEdge="none"
+        android:overScrollMode="never">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_margin="@dimen/margin_6">
+            android:layout_margin="@dimen/margin_6"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tv_question_detail_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_6"
                 android:textColor="@color/md_black_1000"
-                android:textSize="@dimen/font_22"
-                android:layout_marginBottom="@dimen/margin_6"/>
+                android:textSize="@dimen/font_22" />
+
+            <TextView
+                android:id="@+id/tv_question_detial_tags"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_12"/>
 
             <WebView
                 android:id="@+id/wv_question_detail_content"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:fadingEdge="none"
                 android:overScrollMode="never" />
 
         </LinearLayout>
 
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center|center_horizontal|center_vertical">
+
+        <Button
+            android:id="@+id/btn_question_detail_solution"
+            style="@style/BlockButton"
+            android:text="@string/question_detail_button_content"
+            android:theme="@style/BlueButton" />
     </LinearLayout>
 
-</ScrollView>
+
+</LinearLayout>

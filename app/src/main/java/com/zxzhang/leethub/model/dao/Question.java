@@ -18,11 +18,12 @@ public class Question implements Serializable{
     private String title_slug;
     private String description;
     private String content;
+    private String tags;
     private int difficulty;
-    @Generated(hash = 864797189)
+    @Generated(hash = 687129358)
     public Question(Long id, int frontend_question_id, boolean article_live,
             String article_slug, String title, String title_slug,
-            String description, String content, int difficulty) {
+            String description, String content, String tags, int difficulty) {
         this.id = id;
         this.frontend_question_id = frontend_question_id;
         this.article_live = article_live;
@@ -31,6 +32,7 @@ public class Question implements Serializable{
         this.title_slug = title_slug;
         this.description = description;
         this.content = content;
+        this.tags = tags;
         this.difficulty = difficulty;
     }
     @Generated(hash = 1868476517)
@@ -89,6 +91,12 @@ public class Question implements Serializable{
     }
     public void setDifficulty(int difficulty) {
         this.difficulty = difficulty;
+    }
+    public String getTags() {
+        return this.tags;
+    }
+    public void setTags(String tags) {
+        this.tags = tags;
     }
     
 }

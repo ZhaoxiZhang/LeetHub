@@ -18,6 +18,7 @@ public class QuestionDetailActivity extends AppCompatActivity {
     private static final String TAG = "QuestionDetailActivity";
     private Toolbar toolbar;
     private TextView mTvQuestionTitle;
+    private TextView mTvQustionTags;
     private WebView mWvQuestionContent;
     private Intent mIntent;
     private Question mQuestion;
@@ -41,11 +42,8 @@ public class QuestionDetailActivity extends AppCompatActivity {
         if (mQuestion != null) {
 
             mTvQuestionTitle.setText(mQuestion.getTitle());
+            mTvQustionTags.setText(mQuestion.getTags());
             String mQuestionContent = mQuestion.getContent();
-
-            Log.d(TAG, "onCreate: zyzhang " + mQuestionContent);
-
-
             String html = HtmlData.QuestionHTMLFirst + mQuestionContent + HtmlData.QuestionHTMLLast;
             Log.d(TAG, "onCreate: zyzhang \r\n" + html);
             mWvQuestionContent.loadDataWithBaseURL(Url.leetcodeUrl, html,"text/html","utf-8",null);
@@ -61,6 +59,7 @@ public class QuestionDetailActivity extends AppCompatActivity {
     private void initView() {
         initToolbar();
         mTvQuestionTitle = (TextView) findViewById(R.id.tv_question_detail_title);
+        mTvQustionTags = (TextView)findViewById(R.id.tv_question_detial_tags);
         mWvQuestionContent = (WebView) findViewById(R.id.wv_question_detail_content);
     }
 
