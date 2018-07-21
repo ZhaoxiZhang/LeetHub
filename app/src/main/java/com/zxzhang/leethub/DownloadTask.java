@@ -12,6 +12,7 @@ import com.zxzhang.leethub.activity.MainActivity;
 import com.zxzhang.leethub.api.Url;
 import com.zxzhang.leethub.model.bean.LeetGraphqlQuestionBean;
 import com.zxzhang.leethub.model.bean.LeetQuestionBean;
+import com.zxzhang.leethub.model.dao.Article;
 import com.zxzhang.leethub.model.dao.Question;
 import com.zxzhang.leethub.model.db.DBHelper;
 
@@ -68,6 +69,7 @@ public class DownloadTask extends AsyncTask<Void,Integer,Void> {
 
         for (int i = 0; i < size; i++) {
             Question question = new Question();
+            Article article = new Article();
 
             LeetQuestionBean.StatStatusPairsBean questionStatStatus = questions.getStat_status_pairs().get(i);
             LeetQuestionBean.StatStatusPairsBean.StatBean questionStat = questionStatStatus.getStat();
@@ -80,6 +82,7 @@ public class DownloadTask extends AsyncTask<Void,Integer,Void> {
             question.setTitle_slug(questionStat.getQuestion__title_slug());
             question.setDifficulty(difficultyBean.getLevel());
 
+            article.setFrontend_article_id(questionStat.getFrontend_question_id());
 
             try {
                 //获取得到题目的content
@@ -120,6 +123,10 @@ public class DownloadTask extends AsyncTask<Void,Integer,Void> {
                 }
 
                 question.setTags(tags.toString());
+
+                Document doc = Jsoup.connect("https://leetcode.com/articles/" + questionStat.getQuestion__article__slug()).get();
+                String articleBody = doc.getElementsByClass("article-body").outerHtml();
+                article.setContent(articleBody);
 //                String description = doc.select("meta[name=description]").first().attr("content");
 //                question.setDescription(description);
             } catch (IOException e) {
@@ -127,6 +134,7 @@ public class DownloadTask extends AsyncTask<Void,Integer,Void> {
             }
 
             DBHelper.insertDataToQuestionTBL(question);
+            DBHelper.insertDataToArticleTBL(article);
             publishProgress((int)((i / (float)size) * 100));
 
             Log.d(TAG, "doInBackground: " + i);

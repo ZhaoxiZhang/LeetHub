@@ -4,6 +4,8 @@ package com.zxzhang.leethub.model.db;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.zxzhang.leethub.App;
+import com.zxzhang.leethub.model.dao.Article;
+import com.zxzhang.leethub.model.dao.ArticleDao;
 import com.zxzhang.leethub.model.dao.DaoMaster;
 import com.zxzhang.leethub.model.dao.DaoSession;
 import com.zxzhang.leethub.model.dao.Question;
@@ -64,5 +66,16 @@ public class DBHelper {
         QuestionDao questionDao = DBHelper.getSingleton().getDaoSession().getQuestionDao();
         QueryBuilder queryBuilder = questionDao.queryBuilder();
         return queryBuilder.orderAsc(QuestionDao.Properties.Frontend_question_id).list();
+    }
+
+    public static void insertDataToArticleTBL(Article article){
+        ArticleDao articleDao = DBHelper.getSingleton().getDaoSession().getArticleDao();
+        articleDao.insert(article);
+    }
+
+    public static List<Article> queryArticleContent(int id){
+        ArticleDao articleDao = DBHelper.getSingleton().getDaoSession().getArticleDao();
+        QueryBuilder queryBuilder = articleDao.queryBuilder();
+        return queryBuilder.where(ArticleDao.Properties.Frontend_article_id.eq(id)).list();
     }
 }

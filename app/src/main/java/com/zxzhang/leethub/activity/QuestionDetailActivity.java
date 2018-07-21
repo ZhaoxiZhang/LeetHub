@@ -5,8 +5,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.zxzhang.leethub.R;
@@ -14,12 +16,13 @@ import com.zxzhang.leethub.api.Url;
 import com.zxzhang.leethub.model.HtmlData;
 import com.zxzhang.leethub.model.dao.Question;
 
-public class QuestionDetailActivity extends AppCompatActivity {
+public class QuestionDetailActivity extends AppCompatActivity{
     private static final String TAG = "QuestionDetailActivity";
     private Toolbar toolbar;
     private TextView mTvQuestionTitle;
     private TextView mTvQustionTags;
     private WebView mWvQuestionContent;
+    private Button mBtnQuestionShowSolution;
     private Intent mIntent;
     private Question mQuestion;
 
@@ -40,16 +43,26 @@ public class QuestionDetailActivity extends AppCompatActivity {
         webSettings.setAppCacheEnabled(true);//开启 Application Caches 功能
 
         if (mQuestion != null) {
-
             mTvQuestionTitle.setText(mQuestion.getTitle());
             mTvQustionTags.setText(mQuestion.getTags());
             String mQuestionContent = mQuestion.getContent();
             String html = HtmlData.QuestionHTMLFirst + mQuestionContent + HtmlData.QuestionHTMLLast;
-            Log.d(TAG, "onCreate: zyzhang \r\n" + html);
             mWvQuestionContent.loadDataWithBaseURL(Url.leetcodeUrl, html,"text/html","utf-8",null);
+            mBtnQuestionShowSolution.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.d(TAG, "onClick: zyzhang " + mQuestion.getArticle_live());
+                    if (mQuestion.getArticle_live()){
+                        Intent intent = new Intent(getApplicationContext(),ArticleActivity.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putInt("questionFrontendID",mQuestion.getFrontend_question_id());
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                    }
+                }
+            });
         }
     }
-
 
     private void initToolbar() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -61,10 +74,12 @@ public class QuestionDetailActivity extends AppCompatActivity {
         mTvQuestionTitle = (TextView) findViewById(R.id.tv_question_detail_title);
         mTvQustionTags = (TextView)findViewById(R.id.tv_question_detial_tags);
         mWvQuestionContent = (WebView) findViewById(R.id.wv_question_detail_content);
+        mBtnQuestionShowSolution = (Button)findViewById(R.id.btn_question_detail_solution);
     }
 
     private void initData() {
 
     }
+
 
 }
