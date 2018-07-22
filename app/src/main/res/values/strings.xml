@@ -2,4 +2,10 @@
     <string name="app_name">LeetHub</string>
     <string name="title_activity_question_detail">QuestionDetailActivity</string>
     <string name="question_detail_button_content">Show Solution</string>
+    <string name="nav_all">All</string>
+    <string name="nav_tags">Tags</string>
+    <string name="nav_difficulty">Difficulty</string>
+
+    <string name="navigation_drawer_open">open</string>
+    <string name="navigation_drawer_close">close</string>
 </resources>

@@ -1,15 +1,18 @@
 package com.zxzhang.leethub.activity;
 
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 
 import com.daimajia.numberprogressbar.NumberProgressBar;
@@ -28,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private DrawerLayout mDrawerLayout;
     private NumberProgressBar mNumberProgressBar;
+    private NavigationView mNavView;
+    private ActionBarDrawerToggle mActionBarDrawerToggle;
 
     private SharedPreferences pref;
     private SharedPreferences.Editor editor;
@@ -47,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
         editor = pref.edit();
 
         if (pref.getBoolean("first_launch",true)){
-            Log.d(TAG, "onCreate: " + "inzxhznag");
             setContentView(R.layout.activity_main_loading);
             mNumberProgressBar = (NumberProgressBar)findViewById(R.id.number_progress_bar);
 
@@ -59,42 +63,78 @@ public class MainActivity extends AppCompatActivity {
 
         }else{
             setContentView(R.layout.activity_main);
+
             initView();
+
             mQuestionList = DBHelper.queryAllDataOfQuestion();
-            Log.d(TAG, "onCreate: " + mQuestionList.size());
+
             LinearLayoutManager layoutManager = new LinearLayoutManager(this);
             mRvQuestionView.setLayoutManager(layoutManager);
             questionAdapter = new QuestionAdapter(App.getApplication(),mQuestionList);
             mRvQuestionView.setAdapter(questionAdapter);
+            mNavView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//                    item.setCheckable(false);
+                    mDrawerLayout.closeDrawers();
+                    switch (item.getItemId()){
+
+                        default:
+
+
+                    }
+
+                    return true;
+                }
+
+            });
         }
 
     }
 
     private void initView(){
-        initToolbar();
         mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
         mRvQuestionView = (RecyclerView)findViewById(R.id.rv_question);
+        mNavView = (NavigationView)findViewById(R.id.nav_view);
+        initToolbar();
+        setActionBarDrawerToggle();
     }
 
     private void initToolbar(){
         toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null){
-            actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
-        }
+    }
+
+    private void setActionBarDrawerToggle(){
+        mActionBarDrawerToggle = new ActionBarDrawerToggle(this,mDrawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
+        mActionBarDrawerToggle.syncState();
+        mDrawerLayout.addDrawerListener(mActionBarDrawerToggle);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        if (mActionBarDrawerToggle.onOptionsItemSelected(item)){
+            return true;
+        }
         switch (item.getItemId()){
             case android.R.id.home:
                 mDrawerLayout.openDrawer(GravityCompat.START);
                 break;
             default:
         }
-        return true;
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        mActionBarDrawerToggle.syncState();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        mActionBarDrawerToggle.onConfigurationChanged(newConfig);
     }
 
     private void loadToMainActivity(){
