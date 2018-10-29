@@ -23,7 +23,8 @@
             android:name=".activity.QuestionDetailActivity"
             android:label="@string/title_activity_question_detail"
             android:theme="@style/AppTheme" />
-        <activity android:name=".activity.ArticleActivity"></activity>
+        <activity android:name=".activity.ArticleActivity" />
+        <activity android:name=".activity.QuestionDifficultyActivity"></activity>
     </application>
 
 </manifest>

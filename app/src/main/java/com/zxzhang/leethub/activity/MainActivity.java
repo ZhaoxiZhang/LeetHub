@@ -1,5 +1,6 @@
 package com.zxzhang.leethub.activity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -26,8 +27,8 @@ import com.zxzhang.leethub.model.db.DBHelper;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private static final String TAG = "MainActivity";
 
+    private static final String TAG = "MainActivity";
     private Toolbar toolbar;
     private DrawerLayout mDrawerLayout;
     private NumberProgressBar mNumberProgressBar;
@@ -77,8 +78,17 @@ public class MainActivity extends AppCompatActivity {
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 //                    item.setCheckable(false);
                     mDrawerLayout.closeDrawers();
-                    switch (item.getItemId()){
+                    Intent intent = new Intent();
 
+                    switch (item.getItemId()){
+                        case R.id.nav_all:
+                            break;
+                        case R.id.nav_tags:
+                            break;
+                        case R.id.nav_difficulty:
+                            intent.setClass(App.getApplication(), QuestionDifficultyActivity.class);
+                            startActivity(intent);
+                            break;
                         default:
 
 
@@ -94,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initView(){
         mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
-        mRvQuestionView = (RecyclerView)findViewById(R.id.rv_question);
+        mRvQuestionView = (RecyclerView)findViewById(R.id.rv_question_main);
         mNavView = (NavigationView)findViewById(R.id.nav_view);
         initToolbar();
         setActionBarDrawerToggle();
@@ -125,11 +135,13 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /*
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         mActionBarDrawerToggle.syncState();
     }
+    */
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {

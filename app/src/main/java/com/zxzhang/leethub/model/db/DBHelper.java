@@ -78,4 +78,10 @@ public class DBHelper {
         QueryBuilder queryBuilder = articleDao.queryBuilder();
         return queryBuilder.where(ArticleDao.Properties.Frontend_article_id.eq(id)).list();
     }
+
+    public static List<Question>queryAllQuestionOfSpecificDifficulty(int difficulty){
+        QuestionDao questionDao = DBHelper.getSingleton().getDaoSession().getQuestionDao();
+        QueryBuilder queryBuilder = questionDao.queryBuilder();
+        return queryBuilder.where(QuestionDao.Properties.Difficulty.eq(difficulty)).list();
+    }
 }

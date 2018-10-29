@@ -2,15 +2,18 @@ package com.zxzhang.leethub.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.zxzhang.leethub.App;
 import com.zxzhang.leethub.R;
 import com.zxzhang.leethub.api.Url;
 import com.zxzhang.leethub.model.HtmlData;
@@ -67,6 +70,17 @@ public class QuestionDetailActivity extends AppCompatActivity{
     private void initToolbar() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        ActionBar actionBar =  getSupportActionBar();
+        if(actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setDisplayShowTitleEnabled(false);
+        }
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     private void initView() {
@@ -80,6 +94,5 @@ public class QuestionDetailActivity extends AppCompatActivity{
     private void initData() {
 
     }
-
 
 }
