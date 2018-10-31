@@ -76,19 +76,19 @@ public class DBHelper {
     public static List<Article> queryArticleContent(int id){
         ArticleDao articleDao = DBHelper.getSingleton().getDaoSession().getArticleDao();
         QueryBuilder queryBuilder = articleDao.queryBuilder();
-        return queryBuilder.where(ArticleDao.Properties.Frontend_article_id.eq(id)).orderAsc(QuestionDao.Properties.Frontend_question_id).list();
+        return queryBuilder.where(ArticleDao.Properties.Frontend_article_id.eq(id)).list();
     }
 
     //查询某一难度的所有题目
     public static List<Question>queryAllQuestionOfSpecificDifficulty(int difficulty){
         QuestionDao questionDao = DBHelper.getSingleton().getDaoSession().getQuestionDao();
         QueryBuilder queryBuilder = questionDao.queryBuilder();
-        return queryBuilder.where(QuestionDao.Properties.Difficulty.eq(difficulty)).list();
+        return queryBuilder.where(QuestionDao.Properties.Difficulty.eq(difficulty)).orderAsc(QuestionDao.Properties.Frontend_question_id).list();
     }
 
     public static List<Question>queryAllQuestionOfSpecificTopic(String topicName){
         QuestionDao questionDao = DBHelper.getSingleton().getDaoSession().getQuestionDao();
         QueryBuilder queryBuilder = questionDao.queryBuilder();
-        return queryBuilder.where(QuestionDao.Properties.Tags.like(topicName)).list();
+        return queryBuilder.where(QuestionDao.Properties.Tags.like(topicName)).orderAsc(QuestionDao.Properties.Frontend_question_id).list();
     }
 }

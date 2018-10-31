@@ -21,18 +21,22 @@ public class ArticleActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private WebView mWvArticleSolution;
     private Intent mIntent;
+    private String mArticleTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_article);
 
-        initView();
+
 
         mIntent = this.getIntent();
         int articleFrontendID = mIntent.getIntExtra("questionFrontendID",0);
+        mArticleTitle = mIntent.getStringExtra("questionTitle");
+
+        initView();
+
         String articleContent = DBHelper.queryArticleContent(articleFrontendID).get(0).getContent();
-        Log.d(TAG, "onCreate: zyzhang \r\n" + articleContent);
         String articleHTML = HtmlData.ArticleHTMLFirst + articleContent + HtmlData.ArticleHTMLLast;
 
         WebSettings webSettings = mWvArticleSolution.getSettings();
@@ -45,6 +49,10 @@ public class ArticleActivity extends AppCompatActivity {
 
     }
 
+    private void initData(){
+
+    }
+
     private void initToolbar() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -53,6 +61,8 @@ public class ArticleActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setDisplayShowTitleEnabled(false);
         }
+
+        toolbar.setTitle(mArticleTitle);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

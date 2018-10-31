@@ -54,11 +54,11 @@ public class QuestionDetailActivity extends AppCompatActivity{
             mBtnQuestionShowSolution.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.d(TAG, "onClick: zyzhang " + mQuestion.getArticle_live());
                     if (mQuestion.getArticle_live()){
-                        Intent intent = new Intent(getApplicationContext(),ArticleActivity.class);
+                        Intent intent = new Intent(App.getApplication(), ArticleActivity.class);
                         Bundle bundle = new Bundle();
                         bundle.putInt("questionFrontendID",mQuestion.getFrontend_question_id());
+                        bundle.putString("questionTitle", mQuestion.getTitle());
                         intent.putExtras(bundle);
                         startActivity(intent);
                     }

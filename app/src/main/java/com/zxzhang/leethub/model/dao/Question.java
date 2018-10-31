@@ -20,6 +20,8 @@ public class Question implements Serializable{
     private String content;
     private String tags;
     private int difficulty;
+    
+    
     @Generated(hash = 687129358)
     public Question(Long id, int frontend_question_id, boolean article_live,
             String article_slug, String title, String title_slug,
@@ -98,5 +100,4 @@ public class Question implements Serializable{
     public void setTags(String tags) {
         this.tags = tags;
     }
-    
 }

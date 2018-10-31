@@ -12,9 +12,11 @@ import com.zxzhang.leethub.activity.MainActivity;
 import com.zxzhang.leethub.api.Url;
 import com.zxzhang.leethub.model.bean.LeetGraphqlQuestionBean;
 import com.zxzhang.leethub.model.bean.LeetQuestionBean;
+import com.zxzhang.leethub.model.bean.QuestionBean;
 import com.zxzhang.leethub.model.dao.Article;
 import com.zxzhang.leethub.model.dao.Question;
 import com.zxzhang.leethub.model.db.DBHelper;
+import com.zxzhang.leethub.util.JsonUtil;
 
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
@@ -44,6 +46,7 @@ public class DownloadTask extends AsyncTask<Void,Integer,Void> {
         numberProgressBar.setVisibility(View.VISIBLE);
     }
 
+    /*
     @Override
     protected Void doInBackground(Void... params) {
         OkHttpClient client = new OkHttpClient
@@ -55,16 +58,16 @@ public class DownloadTask extends AsyncTask<Void,Integer,Void> {
                 .url("https://leetcode.com/api/problems/algorithms/")
                 .build();
         Response response = null;
-        String responseDate = null;
+        String responseData = null;
         try {
             response = client.newCall(request).execute();
-            responseDate = response.body().string();
+            responseData = response.body().string();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         Gson gson = new Gson();
-        LeetQuestionBean questions = gson.fromJson(responseDate, LeetQuestionBean.class);
+        LeetQuestionBean questions = gson.fromJson(responseData, LeetQuestionBean.class);
         int size = questions.getStat_status_pairs().size();
 
         for (int i = 0; i < size; i++) {
@@ -140,6 +143,41 @@ public class DownloadTask extends AsyncTask<Void,Integer,Void> {
             Log.d(TAG, "doInBackground: " + i);
         }
 
+
+        return null;
+    }
+    */
+
+    @Override
+    protected Void doInBackground(Void... params) {
+
+        String questionDetails = JsonUtil.getJson(App.getApplication(), "questions.json");
+        Log.d(TAG, "doInBackground zyzhang: hello world" + questionDetails);
+        List<QuestionBean>questionsList = JsonUtil.generateObjectFromJsonArray(questionDetails, QuestionBean[].class);
+
+        int size = questionsList.size();
+        for (int i = 0; i < size; i++){
+            QuestionBean questionBean = questionsList.get(i);
+            Question question = new Question();
+            Article article = new Article();
+
+            question.setFrontend_question_id(questionBean.getFrontend_question_id());
+            question.setArticle_live(questionBean.isArticle_live());
+            question.setArticle_slug(questionBean.getArticle_slug());
+            question.setTitle(questionBean.getTitle());
+            question.setTitle_slug(questionBean.getTitle_slug());
+            question.setDifficulty(questionBean.getDifficulty());
+            question.setTags(questionBean.getTags());
+            question.setContent(questionBean.getContent());
+
+
+            article.setFrontend_article_id(questionBean.getFrontend_article_id());
+            article.setContent(questionBean.getArticle_content());
+
+            DBHelper.insertDataToQuestionTBL(question);
+            DBHelper.insertDataToArticleTBL(article);
+            publishProgress((int)((i / (float)size) * 100));
+        }
 
         return null;
     }
