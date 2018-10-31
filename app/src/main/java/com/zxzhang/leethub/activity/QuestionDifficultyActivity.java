@@ -46,7 +46,7 @@ public class QuestionDifficultyActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setDisplayShowTitleEnabled(false);
         }
-        toolbar.setTitle("LeetHub");
+        toolbar.setTitle("Difficulty");
     }
 
     private void initView(){

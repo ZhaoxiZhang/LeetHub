@@ -6,9 +6,9 @@
             android:icon="@drawable/nav_book"
             android:title="@string/nav_all"/>
         <item
-            android:id="@+id/nav_tags"
+            android:id="@+id/nav_topics"
             android:icon="@drawable/nav_book"
-            android:title="@string/nav_tags"/>
+            android:title="@string/nav_topics"/>
         <item
             android:id="@+id/nav_difficulty"
             android:icon="@drawable/nav_book"

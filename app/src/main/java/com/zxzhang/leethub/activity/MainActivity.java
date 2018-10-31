@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -83,7 +82,9 @@ public class MainActivity extends AppCompatActivity {
                     switch (item.getItemId()){
                         case R.id.nav_all:
                             break;
-                        case R.id.nav_tags:
+                        case R.id.nav_topics:
+                            intent.setClass(App.getApplication(), TopicsActivity.class);
+                            startActivity(intent);
                             break;
                         case R.id.nav_difficulty:
                             intent.setClass(App.getApplication(), QuestionDifficultyActivity.class);

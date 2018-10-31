@@ -4,7 +4,7 @@ package com.zxzhang.leethub.model.bean;
 import java.util.List;
 
 public class LeetGraphqlQuestionBean {
-private DataBean data;
+    private DataBean data;
 
     public DataBean getData() {
         return data;

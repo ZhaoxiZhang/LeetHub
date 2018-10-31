@@ -85,6 +85,6 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHo
 
     @Override
     public int getItemCount() {
-        return mQustionList.size();
+        return  mQustionList == null ? 0 : mQustionList.size();
     }
 }
