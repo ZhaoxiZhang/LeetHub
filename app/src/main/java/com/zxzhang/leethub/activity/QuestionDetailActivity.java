@@ -50,7 +50,7 @@ public class QuestionDetailActivity extends AppCompatActivity{
             mTvQustionTags.setText(mQuestion.getTags());
             String mQuestionContent = mQuestion.getContent();
             String html = HtmlData.QuestionHTMLFirst + mQuestionContent + HtmlData.QuestionHTMLLast;
-            mWvQuestionContent.loadDataWithBaseURL(Url.leetcodeUrl, html,"text/html","utf-8",null);
+            mWvQuestionContent.loadDataWithBaseURL("file:///android_asset/", html,"text/html","utf-8",null);
             mBtnQuestionShowSolution.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
