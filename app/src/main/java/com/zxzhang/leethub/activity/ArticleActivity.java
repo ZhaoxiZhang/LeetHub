@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.widget.TextView;
 
 import com.zxzhang.leethub.R;
 import com.zxzhang.leethub.api.Url;
@@ -19,6 +20,7 @@ import com.zxzhang.leethub.model.db.DBHelper;
 public class ArticleActivity extends AppCompatActivity {
     private static final String TAG = "ArticleActivity";
     private Toolbar toolbar;
+    private TextView mTvTitle;
     private WebView mWvArticleSolution;
     private Intent mIntent;
     private String mArticleTitle;
@@ -62,8 +64,6 @@ public class ArticleActivity extends AppCompatActivity {
             actionBar.setDisplayShowTitleEnabled(false);
         }
 
-        toolbar.setTitle(mArticleTitle);
-
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,6 +75,9 @@ public class ArticleActivity extends AppCompatActivity {
     private void initView(){
         initToolbar();
         mWvArticleSolution = (WebView)findViewById(R.id.wv_article_solution);
+        mTvTitle = (TextView)findViewById(R.id.tv_title);
+
+        mTvTitle.setText(mArticleTitle);
     }
 
 }

@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import com.zxzhang.leethub.App;
 import com.zxzhang.leethub.R;
@@ -22,6 +23,7 @@ public class QuestionTopicActivity extends AppCompatActivity {
     private static final String TAG = "QuestionTopicActivity";
     private RecyclerView mRvQuestionTopicView;
     private Toolbar toolbar;
+    private TextView mTvTitle;
     private List<Question>mQuestionList;
     private Intent mIntent;
     private String mTopicName;
@@ -49,7 +51,6 @@ public class QuestionTopicActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setDisplayShowTitleEnabled(false);
         }
-        toolbar.setTitle(mTopicName);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +63,9 @@ public class QuestionTopicActivity extends AppCompatActivity {
     private void initView(){
         initToolbar();
         mRvQuestionTopicView = (RecyclerView)findViewById(R.id.rv_question_topic);
+        mTvTitle = (TextView)findViewById(R.id.tv_title);
+
+        mTvTitle.setText(mTopicName);
     }
 
     private void initData(){

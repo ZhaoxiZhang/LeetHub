@@ -3,12 +3,15 @@ package com.zxzhang.leethub.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.zxzhang.leethub.R;
@@ -28,12 +31,14 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHo
         TextView questionNumber;
         TextView questionTitle;
         TextView questionDifficulty;
+        ImageView questionSolution;
         public ViewHolder(View view){
             super(view);
             questionView = view;
-            questionNumber = (TextView)view.findViewById(R.id.tv_question_number);
-            questionTitle = (TextView)view.findViewById(R.id.tv_question_title);
-            questionDifficulty = (TextView)view.findViewById(R.id.tv_question_difficulty);
+            questionNumber = view.findViewById(R.id.tv_question_number);
+            questionTitle = view.findViewById(R.id.tv_question_title);
+            questionDifficulty = view.findViewById(R.id.tv_question_difficulty);
+            questionSolution = view.findViewById(R.id.iv_question_solution);
         }
     }
 
@@ -68,16 +73,33 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHo
         holder.questionNumber.setText(String.valueOf(question.getFrontend_question_id()));
         Log.d(TAG, "onBindViewHolder: " + question.getTitle());
         holder.questionTitle.setText(question.getTitle());
+
+        boolean isArticleLive = question.getArticle_live();
+        if (isArticleLive){
+            holder.questionSolution.setVisibility(View.VISIBLE);
+        }else{
+            holder.questionSolution.setVisibility(View.INVISIBLE);
+        }
+
         int difficulty = question.getDifficulty();
+
+        Resources resources = mContext.getResources();
+        Drawable drawable;
             switch (difficulty){
                 case 1:
-                    holder.questionDifficulty.setText("Easy");
+                    drawable = resources.getDrawable(R.drawable.bg_item_question_tv_difficulty_easy, mContext.getTheme());
+                    holder.questionDifficulty.setBackground(drawable);
+                    holder.questionDifficulty.setText(mContext.getString(R.string.question_difficulty_easy));
                     break;
                 case 2:
-                    holder.questionDifficulty.setText("Medium");
+                    drawable = resources.getDrawable(R.drawable.bg_item_question_tv_difficulty_medium, mContext.getTheme());
+                    holder.questionDifficulty.setBackground(drawable);
+                    holder.questionDifficulty.setText(mContext.getString(R.string.question_difficulty_medium));
                     break;
                 case 3:
-                    holder.questionDifficulty.setText("Hard");
+                    drawable = resources.getDrawable(R.drawable.bg_item_question_tv_difficulty_hard, mContext.getTheme());
+                    holder.questionDifficulty.setBackground(drawable);
+                    holder.questionDifficulty.setText(mContext.getString(R.string.question_difficulty_hard));
                     break;
                 default:
             }

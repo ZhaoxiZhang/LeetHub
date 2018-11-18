@@ -22,7 +22,7 @@ import com.zxzhang.leethub.model.dao.Question;
 public class QuestionDetailActivity extends AppCompatActivity{
     private static final String TAG = "QuestionDetailActivity";
     private Toolbar toolbar;
-    private TextView mTvQuestionTitle;
+    private TextView mTvTitle;
     private TextView mTvQustionTags;
     private WebView mWvQuestionContent;
     private Button mBtnQuestionShowSolution;
@@ -46,7 +46,7 @@ public class QuestionDetailActivity extends AppCompatActivity{
         webSettings.setAppCacheEnabled(true);//开启 Application Caches 功能
 
         if (mQuestion != null) {
-            mTvQuestionTitle.setText(mQuestion.getTitle());
+            mTvTitle.setText(mQuestion.getTitle());
             mTvQustionTags.setText(mQuestion.getTags());
             String mQuestionContent = mQuestion.getContent();
             String html = HtmlData.QuestionHTMLFirst + mQuestionContent + HtmlData.QuestionHTMLLast;
@@ -81,11 +81,12 @@ public class QuestionDetailActivity extends AppCompatActivity{
                 finish();
             }
         });
+
     }
 
     private void initView() {
         initToolbar();
-        mTvQuestionTitle = (TextView) findViewById(R.id.tv_question_detail_title);
+        mTvTitle = (TextView)findViewById(R.id.tv_title);
         mTvQustionTags = (TextView)findViewById(R.id.tv_question_detial_tags);
         mWvQuestionContent = (WebView) findViewById(R.id.wv_question_detail_content);
         mBtnQuestionShowSolution = (Button)findViewById(R.id.btn_question_detail_solution);

@@ -8,4 +8,21 @@
     android:layout_width="match_parent"
     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-    app:layout_scrollFlags="scroll|enterAlways|snap"/>
+    app:layout_scrollFlags="scroll|enterAlways|snap"
+    app:contentInsetStartWithNavigation="0dp">
+
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/font_20"
+        android:textColor="@color/md_white_1000"
+        android:ellipsize="marquee"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:scrollHorizontally="true"
+        android:singleLine="true"/>
+
+</android.support.v7.widget.Toolbar>

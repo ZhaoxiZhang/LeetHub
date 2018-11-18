@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.zxzhang.leethub.R;
-import com.zxzhang.leethub.activity.QuestionDetailActivity;
 import com.zxzhang.leethub.activity.QuestionTopicActivity;
 import com.zxzhang.leethub.model.bean.LeetTopicsBean;
 
@@ -27,11 +26,13 @@ public class TopicsAdapter extends RecyclerView.Adapter<TopicsAdapter.ViewHolder
     static class ViewHolder extends RecyclerView.ViewHolder{
         View topicView;
         TextView topicName;
+        TextView questionAmount;
 
         public ViewHolder(View view){
             super(view);
             topicView = view;
-            topicName = (TextView)view.findViewById(R.id.tv_topic_name);
+            topicName = view.findViewById(R.id.tv_topic_name);
+            questionAmount = view.findViewById(R.id.tv_question_amount);
         }
     }
 
@@ -67,6 +68,7 @@ public class TopicsAdapter extends RecyclerView.Adapter<TopicsAdapter.ViewHolder
         
         LeetTopicsBean.TopicsBean topic = mTopicsList.get(position);
         holder.topicName.setText(topic.getName());
+        holder.questionAmount.setText(String.valueOf(topic.getQuestions().size()));
         Log.d(TAG, "onBindViewHolder: topic Name = " + topic.getName());
     }
 

@@ -14,6 +14,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.daimajia.numberprogressbar.NumberProgressBar;
 import com.zxzhang.leethub.App;
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private NumberProgressBar mNumberProgressBar;
     private NavigationView mNavView;
     private ActionBarDrawerToggle mActionBarDrawerToggle;
+    private TextView mTvTitle;
 
     private SharedPreferences pref;
     private SharedPreferences.Editor editor;
@@ -107,6 +109,11 @@ public class MainActivity extends AppCompatActivity {
         mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
         mRvQuestionView = (RecyclerView)findViewById(R.id.rv_question_main);
         mNavView = (NavigationView)findViewById(R.id.nav_view);
+        mTvTitle = (TextView)findViewById(R.id.tv_title);
+
+        mNavView.setItemIconTintList(null);
+        mTvTitle.setText(getString(R.string.app_name));
+
         initToolbar();
         setActionBarDrawerToggle();
     }

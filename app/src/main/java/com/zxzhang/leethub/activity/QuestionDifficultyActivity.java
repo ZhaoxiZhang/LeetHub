@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.TextView;
 
 import com.zxzhang.leethub.R;
 import com.zxzhang.leethub.adapter.FragmentPagerAdapter;
@@ -18,6 +19,7 @@ import java.util.List;
 
 public class QuestionDifficultyActivity extends AppCompatActivity {
     private Toolbar toolbar;
+    private TextView mTvTitle;
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
 
@@ -46,11 +48,13 @@ public class QuestionDifficultyActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setDisplayShowTitleEnabled(false);
         }
-        toolbar.setTitle("Difficulty");
     }
 
     private void initView(){
         initToolbar();
+        mTvTitle = (TextView)findViewById(R.id.tv_title);
+
+        mTvTitle.setText(getString(R.string.app_name));
     }
 
     private void initViewPager(){
