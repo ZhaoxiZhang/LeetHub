@@ -4,20 +4,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="?attr/colorPrimary"
     android:id="@+id/toolbar"
-    android:layout_height="?attr/actionBarSize"
     android:layout_width="match_parent"
-    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-    app:layout_scrollFlags="scroll|enterAlways|snap"
-    app:contentInsetStartWithNavigation="0dp">
-
+    android:layout_height="wrap_content"
+    android:minHeight="?attr/actionBarSize"
+    android:fitsSystemWindows="true"
+    app:contentInsetStartWithNavigation="0dp"
+    style="@style/Widget.LeetHub.Toolbar">
 
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="@dimen/font_20"
-        android:textColor="@color/md_white_1000"
+        android:textColor="@color/text_primary_dark"
         android:ellipsize="marquee"
         android:focusable="true"
         android:focusableInTouchMode="true"

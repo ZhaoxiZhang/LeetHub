@@ -1,56 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/md_white_1000"
-    tools:context="com.zxzhang.leethub.activity.QuestionDetailActivity">
+    tools:context="zhaoxizhang.github.io.leethub.activity.QuestionDetailActivity">
 
     <include layout="@layout/toolbar" />
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="9"
-        android:fadingEdge="none"
-        android:overScrollMode="never">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginStart="@dimen/margin_6"
+        android:layout_marginEnd="@dimen/margin_6">
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/tv_question_detail_description"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/margin_10"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_6"
+            android:text="@string/question_description"
+            android:textColor="@color/text_primary_dark"
+            android:textSize="@dimen/font_24" />
 
-            <TextView
-                android:id="@+id/tv_question_detail_description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/margin_6"
-                android:text="@string/question_description"
-                android:textColor="#343434"
-                android:textSize="@dimen/font_24" />
-
-            <TextView
-                android:id="@+id/tv_question_detial_tags"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#686868"
-                android:textSize="@dimen/font_14"/>
+        <TextView
+            android:id="@+id/tv_question_detial_tags"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_tags"
+            android:textSize="@dimen/font_14"/>
 
 
-            <WebView
-                android:id="@+id/wv_question_detail_content"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_6"
-                android:fadingEdge="none"
-                android:overScrollMode="never" />
+        <View
+           android:layout_width="match_parent"
+           android:layout_height="5dp"
+           android:background="@color/md_dark_dividers"  />
 
-        </LinearLayout>
+        <WebView
+            android:id="@+id/wv_question_detail_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_6"
+            android:fadingEdge="none"
+            android:overScrollMode="never" />
 
-    </ScrollView>
+    </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"

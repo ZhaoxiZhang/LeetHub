@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">@color/md_grey_100</color>
+    <color name="colorPrimaryDark">@color/colorPrimary</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="text_primary_dark">@color/md_grey_800</color>
+    <color name="background_super_dark">@color/md_grey_800</color>
 
     <color name="question_difficulty_easy">#5cb85c</color>
     <color name="question_difficulty_medium">#f0ad4e</color>
     <color name="question_difficulty_hard">#d9534f</color>
+
+    <!-- home -->
+    <color name="text_problem_number">@color/md_grey_700</color>
+    <color name="text_problem_title">#0088cc</color>
+
+    <!-- problem_detail -->
+    <color name="text_tags">@color/md_grey_400</color>
 
     <color name="md_black_1000">#000000</color>
 

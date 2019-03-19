@@ -1,16 +1,40 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+    <style name="LeetHub" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:colorPrimary">@color/colorPrimary</item>
+        <item name="android:colorBackground">@color/colorPrimaryDark</item>
+        <item name="android:navigationBarColor">@color/background_super_dark</item>
+
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="LeetHub.Home">
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="LeetHub.ProblemDetail">
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="LeetHub.Topics">
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="LeetHub.Difficulty">
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+    </style>
 
     <!-- Button -->
     <style name="BlockButton">
@@ -23,5 +47,37 @@
         <item name="colorButtonNormal">@color/colorPrimary</item>
         <item name="android:textColor">@android:color/white</item>
     </style>
+
+
+    <style name="TextAppearance.ToolbarTitleSmallCaps" parent="@android:style/TextAppearance.Material.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/text_primary_dark</item>
+        <item name="android:fontFeatureSettings">smcp</item>
+        <item name="android:letterSpacing">0.2</item>
+    </style>
+
+    <style name="LeetHubLightOverlay" parent="@android:style/ThemeOverlay.Material.Light"></style>
+
+    <style name="Widget.LeetHub" parent="android:Widget"></style>
+
+    <style name="Widget.LeetHub.HomeToolbar" parent="Widget.LeetHub.Toolbar.SmallCapsTitle">
+        <item name="android:textColor">@color/text_primary_dark</item>
+        <item name="android:elevation">@dimen/z_app_bar</item>
+        <item name="colorControlNormal">@color/background_super_dark</item>
+    </style>
+
+    <style name="Widget.LeetHub.Toolbar">
+
+        <item name="android:background">?android:colorPrimary</item>
+        <item name="android:elevation">@dimen/z_app_bar</item>
+        <item name="android:theme">@style/LeetHubLightOverlay</item>
+        <item name="android:textColor">@color/text_primary_dark</item>
+        <item name="colorControlNormal">@color/background_super_dark</item>
+    </style>
+
+    <style name="Widget.LeetHub.Toolbar.SmallCapsTitle">
+        <item name="android:titleTextAppearance">@style/TextAppearance.ToolbarTitleSmallCaps</item>
+    </style>
+
+
 
 </resources>

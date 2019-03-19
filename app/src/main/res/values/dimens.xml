@@ -1,4 +1,15 @@
 <resources>
+
+    <!-- home -->
+    <dimen name="nav_header_height">160dp</dimen>
+    <dimen name="nav_normal_padding">16dp</dimen>
+    <dimen name="nav_header_avatar_size">85dp</dimen>
+    <dimen name="nav_header_hint_width">@dimen/nav_header_avatar_size</dimen>
+
+
+    <dimen name="z_app_bar">1dp</dimen>
+
+
     <dimen name="fab_margin">16dp</dimen>
 
     <!--font size-->
@@ -25,10 +36,15 @@
     <dimen name="margin_4">4dp</dimen>
 
     <!-- typical sizes of views -->
-    <dimen name="cardview_height_100">100dp</dimen>
-    <dimen name="cardview_height_80">80dp</dimen>
+    <dimen name="cardview_height_large">100dp</dimen>
+    <dimen name="cardview_height_normal">80dp</dimen>
+    <dimen name="cardview_height_small">70dp</dimen>
+
     <dimen name="button_height_50">50dp</dimen>
     <dimen name="button_height_48">48dp</dimen>
     <dimen name="button_height_36">36dp</dimen>
     <dimen name="button_width_88">88dp</dimen>
+
+
+
 </resources>

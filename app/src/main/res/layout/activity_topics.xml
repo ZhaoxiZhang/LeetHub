@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.zxzhang.leethub.activity.TopicsActivity">
+    tools:context="zhaoxizhang.github.io.leethub.activity.TopicsActivity">
 
     <include layout="@layout/toolbar" />
 
