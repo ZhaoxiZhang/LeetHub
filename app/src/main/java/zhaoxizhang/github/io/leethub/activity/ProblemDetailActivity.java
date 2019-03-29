@@ -15,15 +15,13 @@ import android.widget.Button;
 import android.widget.TextView;
 
 
-
 import zhaoxizhang.github.io.leethub.App;
 import zhaoxizhang.github.io.leethub.R;
 import zhaoxizhang.github.io.leethub.model.HtmlData;
 import zhaoxizhang.github.io.leethub.model.dao.Question;
 
 
-public class QuestionDetailActivity extends AppCompatActivity{
-    private static final String TAG = "QuestionDetailActivity";
+public class ProblemDetailActivity extends AppCompatActivity{
     private Toolbar toolbar;
     private TextView mTvTitle;
     private TextView mTvQustionTags;

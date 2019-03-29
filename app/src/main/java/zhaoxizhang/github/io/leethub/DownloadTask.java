@@ -7,22 +7,11 @@ import android.util.Log;
 import android.view.View;
 
 import com.daimajia.numberprogressbar.NumberProgressBar;
-import com.google.gson.Gson;
 
 
-import org.jsoup.Connection;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-
-import java.io.IOException;
 import java.util.List;
 
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
-import zhaoxizhang.github.io.leethub.activity.MainActivity;
+import zhaoxizhang.github.io.leethub.activity.HomeActivity;
 import zhaoxizhang.github.io.leethub.model.bean.QuestionBean;
 import zhaoxizhang.github.io.leethub.model.dao.Article;
 import zhaoxizhang.github.io.leethub.model.dao.Question;
@@ -190,7 +179,7 @@ public class DownloadTask extends AsyncTask<Void,Integer,Void> {
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
         numberProgressBar.setVisibility(View.GONE);
-        Intent intent = new Intent(App.getApplication(), MainActivity.class);
+        Intent intent = new Intent(App.getApplication(), HomeActivity.class);
         App.getApplication().startActivity(intent);
     }
 

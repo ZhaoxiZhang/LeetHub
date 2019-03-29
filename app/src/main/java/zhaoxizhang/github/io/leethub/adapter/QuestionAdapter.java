@@ -19,7 +19,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import zhaoxizhang.github.io.leethub.R;
-import zhaoxizhang.github.io.leethub.activity.QuestionDetailActivity;
+import zhaoxizhang.github.io.leethub.activity.ProblemDetailActivity;
 import zhaoxizhang.github.io.leethub.model.dao.Question;
 
 import static android.content.ContentValues.TAG;
@@ -59,7 +59,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHo
             public void onClick(View v) {
                 int position = holder.getAdapterPosition();
                 Question question = mQustionList.get(position);
-                Intent intent = new Intent(mContext, QuestionDetailActivity.class);
+                Intent intent = new Intent(mContext, ProblemDetailActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("question",question);
                 intent.putExtras(bundle);

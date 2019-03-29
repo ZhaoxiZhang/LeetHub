@@ -18,6 +18,8 @@
     <!-- problem_detail -->
     <color name="text_tags">@color/md_grey_400</color>
 
+
+
     <color name="md_black_1000">#000000</color>
 
     <color name="md_light_primary_icon">#8A000000</color>

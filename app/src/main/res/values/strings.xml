@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">LeetHub</string>
+    <string name="search">Search</string>
+
     <string name="title_activity_question_detail">QuestionDetailActivity</string>
     <string name="question_detail_button_content">Show Solution</string>
     <string name="nav_all">All</string>
@@ -24,4 +26,9 @@
 
     <string name="question_solution">Solution</string>
     <string name="nav_header_text">点击登陆</string>
+
+    <!-- Search -->
+    <string name="search_hint">搜索</string>
+
+    <string name="transition_search_back" translatable="false">transition_search_back</string>
 </resources>

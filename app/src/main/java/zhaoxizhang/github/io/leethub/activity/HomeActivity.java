@@ -1,5 +1,6 @@
 package zhaoxizhang.github.io.leethub.activity;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -15,6 +16,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -29,8 +31,11 @@ import zhaoxizhang.github.io.leethub.adapter.DividerItemDecoration;
 import zhaoxizhang.github.io.leethub.adapter.QuestionAdapter;
 import zhaoxizhang.github.io.leethub.model.dao.Question;
 import zhaoxizhang.github.io.leethub.model.db.DBHelper;
+import zhaoxizhang.github.io.leethub.ui.SearchActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity {
+    private static final int RC_SEARCH = 0;
+
     private Toolbar toolbar;
     private DrawerLayout mDrawerLayout;
     private NumberProgressBar mNumberProgressBar;
@@ -116,7 +121,6 @@ public class MainActivity extends AppCompatActivity {
 
         mNavView.setItemIconTintList(null);
 
-
         initToolbar();
         setActionBarDrawerToggle();
 
@@ -140,6 +144,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.home_menu, menu);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (mActionBarDrawerToggle.onOptionsItemSelected(item)){
             return true;
@@ -147,6 +157,12 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case android.R.id.home:
                 mDrawerLayout.openDrawer(GravityCompat.START);
+                break;
+            case R.id.menu_search:
+                View searchMenuView = toolbar.findViewById(R.id.menu_search);
+                Bundle options = ActivityOptions.makeSceneTransitionAnimation(this, searchMenuView,
+                        getString(R.string.transition_search_back)).toBundle();
+                startActivityForResult(new Intent(this, SearchActivity.class), RC_SEARCH, options);
                 break;
             default:
         }

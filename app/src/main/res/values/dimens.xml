@@ -44,6 +44,8 @@
     <dimen name="button_height_48">48dp</dimen>
     <dimen name="button_height_36">36dp</dimen>
     <dimen name="button_width_88">88dp</dimen>
+    
+    <dimen name="padding_normal">16dp</dimen>
 
 
 
