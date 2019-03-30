@@ -43,7 +43,7 @@
         android:background="@color/md_white_1000"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header"
-        app:menu="@menu/nav_menu" />
+        app:menu="@menu/hoem_drawer_menu" />
 
 </android.support.v4.widget.DrawerLayout>
 

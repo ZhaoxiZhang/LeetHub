@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/md_white_1000"
+    android:orientation="vertical"
+    tools:context=".ui.activity.ProblemActivity">
+
+    <include
+        layout="@layout/toolbar"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_problem"
+        android:layout_width = "match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bnv_problem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimary"
+        android:elevation="@dimen/z_app_bar"
+        app:itemIconTint="@drawable/problem_bottom_navigation_selector"
+        app:itemTextColor="@drawable/problem_bottom_navigation_selector"
+        app:labelVisibilityMode="labeled"
+        app:itemBackground="@null"
+        app:menu="@menu/problem_bottom_navigation"/>
+</LinearLayout>

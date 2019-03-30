@@ -1,6 +1,7 @@
-package zhaoxizhang.github.io.leethub.fragment;
+package zhaoxizhang.github.io.leethub.ui.fragment;
 
 
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -17,6 +18,7 @@ import java.util.List;
 
 import zhaoxizhang.github.io.leethub.App;
 import zhaoxizhang.github.io.leethub.R;
+import zhaoxizhang.github.io.leethub.ui.DividerItemDecoration;
 import zhaoxizhang.github.io.leethub.adapter.QuestionAdapter;
 import zhaoxizhang.github.io.leethub.model.dao.Question;
 import zhaoxizhang.github.io.leethub.model.db.DBHelper;
@@ -60,6 +62,9 @@ public class TabFragment extends Fragment {
         questionAdapter = new QuestionAdapter(App.getApplication(),mQuestionList);
         mRvTabView.setAdapter(questionAdapter);
 
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL_LIST, new ColorDrawable(getResources().getColor(R.color.md_dark_dividers)));
+        dividerItemDecoration.setHeight(1);
+        mRvTabView.addItemDecoration(dividerItemDecoration);
     }
 
 }

@@ -26,6 +26,13 @@
         <item name="colorControlNormal">@color/background_super_dark</item>
     </style>
 
+    <style name="LeetHub.Problem">
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+        <item name="colorControlNormal">@color/background_super_dark</item>
+    </style>
+
     <style name="LeetHub.Topics">
         <item name="android:windowTranslucentStatus">false</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
@@ -36,6 +43,12 @@
         <item name="android:windowTranslucentStatus">false</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="LeetHub.SearchView">
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@color/md_light_background</item>
     </style>
 
     <style name="LeetHubOverlay" parent="@android:style/ThemeOverlay.Material.ActionBar"></style>
@@ -51,19 +64,6 @@
         <item name="android:colorControlActivated">?android:colorAccent</item>
         <item name="android:searchViewStyle">@style/Widget.LeetHub.SearchView</item>
     </style>
-
-    <!-- Button -->
-    <style name="BlockButton">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">@dimen/button_height_48</item>
-        <item name="android:textAllCaps">false</item>
-    </style>
-
-    <style name="BlueButton">
-        <item name="colorButtonNormal">@color/colorPrimary</item>
-        <item name="android:textColor">@android:color/white</item>
-    </style>
-
 
     <style name="TextAppearance.ToolbarTitleSmallCaps" parent="@android:style/TextAppearance.Material.Widget.ActionBar.Title">
         <item name="android:textColor">@color/text_primary_dark</item>
@@ -82,7 +82,6 @@
     </style>
 
     <style name="Widget.LeetHub.Toolbar">
-
         <item name="android:background">?android:colorPrimary</item>
         <item name="android:elevation">@dimen/z_app_bar</item>
         <item name="android:theme">@style/LeetHubLightOverlay</item>
@@ -93,7 +92,5 @@
     <style name="Widget.LeetHub.Toolbar.SmallCapsTitle">
         <item name="android:titleTextAppearance">@style/TextAppearance.ToolbarTitleSmallCaps</item>
     </style>
-
-
 
 </resources>

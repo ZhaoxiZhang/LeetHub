@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/description"
+        android:title="@string/problem_description"
+        android:icon="@drawable/ic_description"/>
+    <item
+        android:id="@+id/solution"
+        android:title="@string/problem_solution"
+        android:icon="@drawable/ic_solution"/>
+    <item
+        android:id="@+id/submissions"
+        android:title="@string/problem_submissions"
+        android:icon="@drawable/ic_submissions"/>
+    <item
+        android:id="@+id/discuss"
+        android:title="@string/problem_discuss"
+        android:icon="@drawable/ic_discuss"/>
+
+</menu>

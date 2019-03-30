@@ -13,11 +13,10 @@ import android.widget.TextView;
 
 
 
-
 import java.util.List;
 
 import zhaoxizhang.github.io.leethub.R;
-import zhaoxizhang.github.io.leethub.activity.QuestionTopicActivity;
+import zhaoxizhang.github.io.leethub.ui.activity.QuestionTopicActivity;
 import zhaoxizhang.github.io.leethub.model.bean.LeetTopicsBean;
 
 public class TopicsAdapter extends RecyclerView.Adapter<TopicsAdapter.ViewHolder>{

@@ -1,14 +1,18 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- home -->
+    <!-- NavigationBar -->
     <dimen name="nav_header_height">160dp</dimen>
-    <dimen name="nav_normal_padding">16dp</dimen>
+    <dimen name="nav_normal_padding">@dimen/padding_normal</dimen>
     <dimen name="nav_header_avatar_size">85dp</dimen>
     <dimen name="nav_header_hint_width">@dimen/nav_header_avatar_size</dimen>
 
+    <!-- problem -->
+    <!-- keep BottomNavigationView text size unchanged -->
+    <dimen name="design_bottom_navigation_text_size" tools:override="true">@dimen/font_12</dimen>
+    <dimen name="design_bottom_navigation_active_text_size" tools:override="true">@dimen/font_12</dimen>
 
     <dimen name="z_app_bar">1dp</dimen>
-
 
     <dimen name="fab_margin">16dp</dimen>
 
@@ -44,9 +48,10 @@
     <dimen name="button_height_48">48dp</dimen>
     <dimen name="button_height_36">36dp</dimen>
     <dimen name="button_width_88">88dp</dimen>
-    
+
+    <dimen name="margin_normal">16dp</dimen>
+
+    <dimen name="padding_small">10dp</dimen>
     <dimen name="padding_normal">16dp</dimen>
-
-
 
 </resources>

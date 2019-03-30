@@ -1,4 +1,4 @@
-package zhaoxizhang.github.io.leethub.activity;
+package zhaoxizhang.github.io.leethub.ui.activity;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
@@ -24,22 +24,23 @@ import com.daimajia.numberprogressbar.NumberProgressBar;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import zhaoxizhang.github.io.leethub.App;
 import zhaoxizhang.github.io.leethub.DownloadTask;
 import zhaoxizhang.github.io.leethub.R;
-import zhaoxizhang.github.io.leethub.adapter.DividerItemDecoration;
+import zhaoxizhang.github.io.leethub.ui.DividerItemDecoration;
 import zhaoxizhang.github.io.leethub.adapter.QuestionAdapter;
 import zhaoxizhang.github.io.leethub.model.dao.Question;
 import zhaoxizhang.github.io.leethub.model.db.DBHelper;
-import zhaoxizhang.github.io.leethub.ui.SearchActivity;
 
 public class HomeActivity extends AppCompatActivity {
     private static final int RC_SEARCH = 0;
 
-    private Toolbar toolbar;
-    private DrawerLayout mDrawerLayout;
-    private NumberProgressBar mNumberProgressBar;
-    private NavigationView mNavView;
+    @BindView(R.id.toolbar) Toolbar toolbar;
+    @BindView(R.id.drawer_layout) DrawerLayout mDrawerLayout;
+    @BindView(R.id.nav_view) NavigationView mNavView;
+    NumberProgressBar mNumberProgressBar;
     private ActionBarDrawerToggle mActionBarDrawerToggle;
 
     private SharedPreferences pref;
@@ -47,10 +48,10 @@ public class HomeActivity extends AppCompatActivity {
 
     private DownloadTask downloadTask;
 
-    private RecyclerView mRvQuestionView;
+    @BindView(R.id.rv_question_main)
+    RecyclerView mRvQuestionView;
     private QuestionAdapter questionAdapter;
     private List<Question>mQuestionList;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +61,8 @@ public class HomeActivity extends AppCompatActivity {
         editor = pref.edit();
 
         if (pref.getBoolean("first_launch",true)){
-            setContentView(R.layout.activity_main_loading);
+            setContentView(R.layout.activity_home_loading);
+
             mNumberProgressBar = findViewById(R.id.number_progress_bar);
 
             downloadTask = new DownloadTask(mNumberProgressBar);
@@ -70,11 +72,12 @@ public class HomeActivity extends AppCompatActivity {
             editor.apply();
 
         }else{
-            setContentView(R.layout.activity_main);
+            setContentView(R.layout.activity_home);
+            ButterKnife.bind(this);
 
             initView();
 
-            mQuestionList = DBHelper.queryAllDataOfQuestion();
+           mQuestionList = DBHelper.queryAllDataOfQuestion();
 
             LinearLayoutManager layoutManager = new LinearLayoutManager(this);
             mRvQuestionView.setLayoutManager(layoutManager);
@@ -98,11 +101,10 @@ public class HomeActivity extends AppCompatActivity {
                             startActivity(intent);
                             break;
                         case R.id.nav_difficulty:
-                            intent.setClass(App.getApplication(), QuestionDifficultyActivity.class);
+                            intent.setClass(App.getApplication(), ProblemDifficultyActivity.class);
                             startActivity(intent);
                             break;
                         default:
-
 
                     }
                     return true;
@@ -114,10 +116,6 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void initView(){
-        mDrawerLayout = findViewById(R.id.drawer_layout);
-        mRvQuestionView = findViewById(R.id.rv_question_main);
-        mNavView = findViewById(R.id.nav_view);
-
 
         mNavView.setItemIconTintList(null);
 
@@ -132,13 +130,12 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void initToolbar(){
-        toolbar = findViewById(R.id.toolbar);
         //toolbar.setTitleTextColor(getResources().getColor(R.color.background_super_dark));
         setSupportActionBar(toolbar);
     }
 
     private void setActionBarDrawerToggle(){
-        mActionBarDrawerToggle = new ActionBarDrawerToggle(this,mDrawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
+        mActionBarDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         mActionBarDrawerToggle.syncState();
         mDrawerLayout.addDrawerListener(mActionBarDrawerToggle);
     }
@@ -181,9 +178,5 @@ public class HomeActivity extends AppCompatActivity {
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         mActionBarDrawerToggle.onConfigurationChanged(newConfig);
-    }
-
-    private void loadToMainActivity(){
-
     }
 }

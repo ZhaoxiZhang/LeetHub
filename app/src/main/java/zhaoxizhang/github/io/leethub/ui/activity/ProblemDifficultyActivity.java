@@ -1,4 +1,4 @@
-package zhaoxizhang.github.io.leethub.activity;
+package zhaoxizhang.github.io.leethub.ui.activity;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -17,21 +17,24 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import zhaoxizhang.github.io.leethub.R;
 import zhaoxizhang.github.io.leethub.adapter.FragmentPagerAdapter;
-import zhaoxizhang.github.io.leethub.fragment.TabFragment;
+import zhaoxizhang.github.io.leethub.ui.fragment.TabFragment;
 
-public class QuestionDifficultyActivity extends AppCompatActivity {
-    private Toolbar toolbar;
-    private TextView mTvTitle;
-    private TabLayout mTabLayout;
-    private ViewPager mViewPager;
+public class ProblemDifficultyActivity extends AppCompatActivity {
+    @BindView(R.id.toolbar) Toolbar toolbar;
+    @BindView(R.id.tv_title) TextView mTvTitle;
+    @BindView(R.id.tl_problem_difficulty_main) TabLayout mTabLayout;
+    @BindView(R.id.vp_problem_difficulty_main) ViewPager mViewPager;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_question_difficulty);
+        setContentView(R.layout.activity_problem_difficulty);
+        ButterKnife.bind(this);
 
         initView();
         initViewPager();
@@ -56,7 +59,6 @@ public class QuestionDifficultyActivity extends AppCompatActivity {
 
     private void initView(){
         initToolbar();
-        mTvTitle = findViewById(R.id.tv_title);
 
         mTvTitle.setText(getString(R.string.app_name));
 
@@ -67,9 +69,6 @@ public class QuestionDifficultyActivity extends AppCompatActivity {
     }
 
     private void initViewPager(){
-        mTabLayout = findViewById(R.id.tl_question_difficulty_main);
-        mViewPager = findViewById(R.id.vp_question_difficulty_main);
-
         List<String> titles = new ArrayList<>(3);
         titles.add(getString(R.string.tab_question_difficulty_1));
         titles.add(getString(R.string.tab_question_difficulty_2));
@@ -80,9 +79,9 @@ public class QuestionDifficultyActivity extends AppCompatActivity {
         mTabLayout.addTab(mTabLayout.newTab().setText(titles.get(2)));
 
         List<Fragment>fragments = new ArrayList<>();
-        fragments.add(new TabFragment());
-        fragments.add(new TabFragment());
-        fragments.add(new TabFragment());
+        fragments.add(TabFragment.newInstance(0));
+        fragments.add(TabFragment.newInstance(1));
+        fragments.add(TabFragment.newInstance(2));
 
         FragmentPagerAdapter mFragmentAdapter = new FragmentPagerAdapter(getSupportFragmentManager(), fragments, titles);
         mViewPager.setAdapter(mFragmentAdapter);

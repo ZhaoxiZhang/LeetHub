@@ -5,15 +5,15 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-
-
 import java.util.List;
-
-import zhaoxizhang.github.io.leethub.fragment.TabFragment;
 
 public class FragmentPagerAdapter extends FragmentStatePagerAdapter{
     private List<Fragment>mFragments;
     private List<String>mTitles;
+
+    public FragmentPagerAdapter(FragmentManager fragmentManager, List<Fragment>fragments){
+        this(fragmentManager, fragments, null);
+    }
 
     public FragmentPagerAdapter(FragmentManager fragmentManager, List<Fragment>fragments, List<String>titles){
         super(fragmentManager);
@@ -23,16 +23,18 @@ public class FragmentPagerAdapter extends FragmentStatePagerAdapter{
 
     @Override
     public Fragment getItem(int position) {
-        return TabFragment.newInstance(position);
+        return mFragments.get(position);
     }
 
     @Override
     public int getCount() {
-        return mFragments.size();
+        return mFragments == null ? 0 : mFragments.size();
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
         return mTitles.get(position);
     }
+
+
 }

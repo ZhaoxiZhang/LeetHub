@@ -11,7 +11,7 @@ import com.daimajia.numberprogressbar.NumberProgressBar;
 
 import java.util.List;
 
-import zhaoxizhang.github.io.leethub.activity.HomeActivity;
+import zhaoxizhang.github.io.leethub.ui.activity.HomeActivity;
 import zhaoxizhang.github.io.leethub.model.bean.QuestionBean;
 import zhaoxizhang.github.io.leethub.model.dao.Article;
 import zhaoxizhang.github.io.leethub.model.dao.Question;

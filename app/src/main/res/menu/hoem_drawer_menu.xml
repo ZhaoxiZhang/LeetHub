@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:id="@+id/home_drawer_menu_problem"
+        android:checkableBehavior="none">
+        <item
+            android:id="@+id/nav_all"
+            android:icon="@drawable/ic_all"
+            android:title="@string/nav_all" />
+        <item
+            android:id="@+id/nav_topics"
+            android:icon="@drawable/ic_topic"
+            android:title="@string/nav_topics" />
+        <item
+            android:id="@+id/nav_difficulty"
+            android:icon="@drawable/ic_difficulty"
+            android:title="@string/nav_difficulty" />
+        <item
+            android:id="@+id/nav_sync"
+            android:icon="@drawable/ic_sync"
+            android:title="@string/nav_sync" />
+    </group>
+    <group
+        android:id="@+id/home_drawer_menu_setting"
+        android:checkableBehavior="none">
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/ic_setting"
+            android:title="@string/nav_settings" />
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/ic_about"
+            android:title="@string/nav_about" />
+    </group>
+
+</menu>

@@ -4,7 +4,8 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.SearchActivity">
+    android:fitsSystemWindows="true"
+    tools:context=".ui.activity.SearchActivity">
 
     <View
         android:id="@+id/scrim"

@@ -1,4 +1,4 @@
-package zhaoxizhang.github.io.leethub.adapter;
+package zhaoxizhang.github.io.leethub.ui;
 
 import android.content.Context;
 import android.content.res.TypedArray;
