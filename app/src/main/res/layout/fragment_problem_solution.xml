@@ -5,21 +5,27 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragment.ProblemSolutionFragment">
 
-    <WebView
-        android:id="@+id/wv_problem_solution"
-        android:layout_margin="@dimen/margin_6"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/srl_problem_contain"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fadingEdge="none"
-        android:overScrollMode="never"
-        android:scrollbars="none">
-    </WebView>
+        android:layout_height="match_parent">
+
+        <WebView
+            android:id="@+id/wv_problem_solution"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/margin_6"
+            android:fadingEdge="none"
+            android:overScrollMode="never"
+            android:scrollbars="none"/>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
 
     <ViewStub
         android:id="@+id/stub_no_solution"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout="@layout/no_solution"/>
+        android:layout="@layout/no_solution" />
 
 </FrameLayout>

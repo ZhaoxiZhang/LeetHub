@@ -5,11 +5,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewStub;
+import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.TextView;
@@ -32,9 +34,9 @@ public class ProblemSolutionFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    @BindView(R.id.srl_problem_contain) SwipeRefreshLayout mSrlProblemContain;
     @BindView(R.id.wv_problem_solution) WebView mWvArticleSolution;
     @Nullable @BindView(R.id.no_solution) TextView mTvNoSolution;
-
     private Intent mIntent;
 
     public ProblemSolutionFragment() {
@@ -82,7 +84,7 @@ public class ProblemSolutionFragment extends Fragment {
         String articleContent = DBHelper.queryArticleContent(articleFrontendID).get(0).getContent();
 
         if (articleContent != null) {
-            String articleHTML = HtmlData.ArticleHTMLFirst + articleContent + HtmlData.ArticleHTMLLast;
+            final String articleHTML = HtmlData.ArticleHTMLFirst + articleContent + HtmlData.ArticleHTMLLast;
 
 
             WebSettings webSettings = mWvArticleSolution.getSettings();
@@ -91,7 +93,30 @@ public class ProblemSolutionFragment extends Fragment {
             webSettings.setDatabaseEnabled(true);   //开启 database storage API 功能
             webSettings.setAppCacheEnabled(true);   //开启 Application Caches 功能
 
-            mWvArticleSolution.loadDataWithBaseURL(Url.leetcodeUrl, articleHTML, "text/html", "utf-8", null);
+            mSrlProblemContain.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                @Override
+                public void onRefresh() {
+                    mWvArticleSolution.loadDataWithBaseURL(Url.leetcodeUrl, articleHTML, "text/html", "utf-8", null);
+                }
+            });
+            mSrlProblemContain.post(new Runnable() {
+                @Override
+                public void run() {
+                    mSrlProblemContain.setRefreshing(true);
+                    mWvArticleSolution.loadDataWithBaseURL(Url.leetcodeUrl, articleHTML, "text/html", "utf-8", null);
+                }
+            });
+
+            mWvArticleSolution.setWebChromeClient(new WebChromeClient(){
+                @Override
+                public void onProgressChanged(WebView view, int newProgress) {
+                    if (newProgress == 100){
+                        mSrlProblemContain.setRefreshing(false);
+                    }else if (!mSrlProblemContain.isRefreshing()){
+                        mSrlProblemContain.setRefreshing(true);
+                    }
+                }
+            });
 
             mWvArticleSolution.setOnTouchListener(new View.OnTouchListener() {
                 @Override
@@ -123,7 +148,6 @@ public class ProblemSolutionFragment extends Fragment {
                 final ViewStub stub = view.findViewById(R.id.stub_no_solution);
                 mTvNoSolution = (TextView)stub.inflate();
             }
-
         }
 
         return view;
