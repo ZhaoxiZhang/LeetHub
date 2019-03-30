@@ -23,7 +23,7 @@
 
 
 
-题目难度分类页
+侧边栏菜单
 
 <img src="./pictures/2.png" width="50%" height="50%" />
 
@@ -38,9 +38,3 @@
 题目解析详情页
 
 <img src="./pictures/4.png" width="50%" height="60%" />
-
-
-
-侧边栏菜单
-
-<img src="./pictures/5.png" width="50%" height="50%" />
