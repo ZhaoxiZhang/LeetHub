@@ -19,6 +19,9 @@
     <color name="bnv_checked">@color/md_light_primary_icon</color>
     <color name="bnv_unchecked">@color/md_grey_400</color>
 
+    <!-- problem -->
+    <color name="progress_dark">@color/md_grey_700</color>
+
     <!-- problem_difficulty -->
 
 

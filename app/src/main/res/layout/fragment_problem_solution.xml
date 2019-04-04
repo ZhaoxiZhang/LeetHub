@@ -8,7 +8,7 @@
     tools:context=".ui.fragment.ProblemSolutionFragment">
 
     <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/srl_problem_contain"
+        android:id="@+id/srl_problem_solution_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

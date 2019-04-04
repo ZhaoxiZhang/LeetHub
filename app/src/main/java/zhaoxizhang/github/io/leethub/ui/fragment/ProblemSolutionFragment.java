@@ -19,56 +19,19 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import zhaoxizhang.github.io.leethub.R;
-import zhaoxizhang.github.io.leethub.api.Url;
+import zhaoxizhang.github.io.leethub.api.URL;
 import zhaoxizhang.github.io.leethub.model.HtmlData;
+import zhaoxizhang.github.io.leethub.model.dao.Question;
 import zhaoxizhang.github.io.leethub.model.db.DBHelper;
 
 
 public class ProblemSolutionFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    @BindView(R.id.srl_problem_contain) SwipeRefreshLayout mSrlProblemContain;
+    @BindView(R.id.srl_problem_solution_container) SwipeRefreshLayout mSrlProblemSolutionContainer;
     @BindView(R.id.wv_problem_solution) WebView mWvArticleSolution;
     @Nullable @BindView(R.id.no_solution) TextView mTvNoSolution;
+
     private Intent mIntent;
-
-    public ProblemSolutionFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ProblemSolutionFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ProblemSolutionFragment newInstance(String param1, String param2) {
-        ProblemSolutionFragment fragment = new ProblemSolutionFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    private Question mQuestion;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -79,11 +42,11 @@ public class ProblemSolutionFragment extends Fragment {
         ButterKnife.bind(this, view);
 
         mIntent = getActivity().getIntent();
-        int articleFrontendID = mIntent.getIntExtra("questionFrontendID", 0);
+        mQuestion = (Question) mIntent.getSerializableExtra("question");
 
-        String articleContent = DBHelper.queryArticleContent(articleFrontendID).get(0).getContent();
-
-        if (articleContent != null) {
+        boolean articleLive = mQuestion.getArticle_live();
+        if (articleLive){
+            String articleContent = DBHelper.queryArticleContent(mQuestion.getFrontend_question_id()).get(0).getContent();
             final String articleHTML = HtmlData.ArticleHTMLFirst + articleContent + HtmlData.ArticleHTMLLast;
 
 
@@ -93,17 +56,17 @@ public class ProblemSolutionFragment extends Fragment {
             webSettings.setDatabaseEnabled(true);   //开启 database storage API 功能
             webSettings.setAppCacheEnabled(true);   //开启 Application Caches 功能
 
-            mSrlProblemContain.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            mSrlProblemSolutionContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
                 @Override
                 public void onRefresh() {
-                    mWvArticleSolution.loadDataWithBaseURL(Url.leetcodeUrl, articleHTML, "text/html", "utf-8", null);
+                    mWvArticleSolution.loadDataWithBaseURL(URL.leetcodeUrl, articleHTML, "text/html", "utf-8", null);
                 }
             });
-            mSrlProblemContain.post(new Runnable() {
+            mSrlProblemSolutionContainer.post(new Runnable() {
                 @Override
                 public void run() {
-                    mSrlProblemContain.setRefreshing(true);
-                    mWvArticleSolution.loadDataWithBaseURL(Url.leetcodeUrl, articleHTML, "text/html", "utf-8", null);
+                    mSrlProblemSolutionContainer.setRefreshing(true);
+                    mWvArticleSolution.loadDataWithBaseURL(URL.leetcodeUrl, articleHTML, "text/html", "utf-8", null);
                 }
             });
 
@@ -111,9 +74,9 @@ public class ProblemSolutionFragment extends Fragment {
                 @Override
                 public void onProgressChanged(WebView view, int newProgress) {
                     if (newProgress == 100){
-                        mSrlProblemContain.setRefreshing(false);
-                    }else if (!mSrlProblemContain.isRefreshing()){
-                        mSrlProblemContain.setRefreshing(true);
+                        mSrlProblemSolutionContainer.setRefreshing(false);
+                    }else if (!mSrlProblemSolutionContainer.isRefreshing()){
+                        mSrlProblemSolutionContainer.setRefreshing(true);
                     }
                 }
             });

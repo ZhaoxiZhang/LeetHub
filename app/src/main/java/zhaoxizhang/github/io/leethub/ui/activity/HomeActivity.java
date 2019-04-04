@@ -81,7 +81,7 @@ public class HomeActivity extends AppCompatActivity {
 
             LinearLayoutManager layoutManager = new LinearLayoutManager(this);
             mRvQuestionView.setLayoutManager(layoutManager);
-            questionAdapter = new QuestionAdapter(App.getApplication(),mQuestionList);
+            questionAdapter = new QuestionAdapter(App.getApplication(), mQuestionList);
             mRvQuestionView.setAdapter(questionAdapter);
             DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL_LIST, new ColorDrawable(getResources().getColor(R.color.md_dark_dividers)));
             dividerItemDecoration.setHeight(1);

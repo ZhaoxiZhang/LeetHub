@@ -124,7 +124,4 @@ public class ProblemDescriptionFragment extends Fragment {
         return view;
     }
 
-
-
-
 }

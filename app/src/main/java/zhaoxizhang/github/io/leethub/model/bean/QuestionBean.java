@@ -4,6 +4,7 @@ package zhaoxizhang.github.io.leethub.model.bean;
 public class QuestionBean {
 
     /**
+     * question_id : 968
      * frontend_question_id : 932
      * article_live : true
      * article_slug : beautiful-array
@@ -89,6 +90,7 @@ public class QuestionBean {
      </div>
      */
 
+    private int question_id;
     private int frontend_question_id;
     private boolean article_live;
     private String article_slug;
@@ -99,6 +101,14 @@ public class QuestionBean {
     private int difficulty;
     private int frontend_article_id;
     private String article_content;
+
+    public int getQuestion_id() {
+        return question_id;
+    }
+
+    public void setQuestion_id(int question_id) {
+        this.question_id = question_id;
+    }
 
     public int getFrontend_question_id() {
         return frontend_question_id;

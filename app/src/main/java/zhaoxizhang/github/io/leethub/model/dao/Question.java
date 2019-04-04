@@ -11,6 +11,7 @@ public class Question implements Serializable{
     private static final long serialVersionUID = 1L;
     @Id(autoincrement = true)
     private Long id;
+    private int question_id;
     private int frontend_question_id;
     private boolean article_live;
     private String article_slug;
@@ -20,13 +21,14 @@ public class Question implements Serializable{
     private String content;
     private String tags;
     private int difficulty;
-    
-    
-    @Generated(hash = 687129358)
-    public Question(Long id, int frontend_question_id, boolean article_live,
-            String article_slug, String title, String title_slug,
-            String description, String content, String tags, int difficulty) {
+
+    @Generated(hash = 2056310146)
+    public Question(Long id, int question_id, int frontend_question_id,
+            boolean article_live, String article_slug, String title,
+            String title_slug, String description, String content, String tags,
+            int difficulty) {
         this.id = id;
+        this.question_id = question_id;
         this.frontend_question_id = frontend_question_id;
         this.article_live = article_live;
         this.article_slug = article_slug;
@@ -99,5 +101,11 @@ public class Question implements Serializable{
     }
     public void setTags(String tags) {
         this.tags = tags;
+    }
+    public int getQuestion_id() {
+        return this.question_id;
+    }
+    public void setQuestion_id(int question_id) {
+        this.question_id = question_id;
     }
 }

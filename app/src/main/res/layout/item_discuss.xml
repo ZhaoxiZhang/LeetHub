@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/discuss_item_height"
+    android:layout_marginStart="@dimen/margin_small"
+    android:layout_marginEnd="@dimen/margin_small"
+    android:paddingBottom="@dimen/margin_small"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/civ_problem_discuss_avatar"
+            android:layout_width="@dimen/discuss_avatar_size"
+            android:layout_height="@dimen/discuss_avatar_size"
+            android:layout_gravity="center"
+            android:src="@color/md_grey_100"
+            app:civ_border_color="@color/md_grey_500"
+            app:civ_border_width="1dp" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginStart="@dimen/margin_small"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_problem_discuss_author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_primary_dark"
+                android:textSize="@dimen/discuss_author_font_size"/>
+
+            <TextView
+                android:id="@+id/tv_problem_discuss_createDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/discuss_createDate_font_size"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_problem_discuss_drop_up"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:drawableStart="@drawable/ic_arrow_drop_up_24dp"
+            android:drawablePadding="3dp" />
+
+        <TextView
+            android:id="@+id/tv_problem_discuss_view_eye"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:drawableStart="@drawable/ic_view_eye_24dp"
+            android:drawablePadding="3dp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_problem_discuss_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_primary_dark"
+        android:textSize="@dimen/discuss_title_font_size"/>
+
+</LinearLayout>

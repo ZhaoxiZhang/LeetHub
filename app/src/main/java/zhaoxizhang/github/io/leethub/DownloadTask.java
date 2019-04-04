@@ -91,7 +91,7 @@ public class DownloadTask extends AsyncTask<Void,Integer,Void> {
                         .addHeader("Referer","https://leetcode.com/problems/" + questionStat.getQuestion__title_slug())
                         .addHeader("Cookie","__cfduid=" + __cfduid + ";" + "csrftoken=" + csrftoken)
                         .addHeader("x-csrftoken",csrftoken)
-                        .url(Url.graphqlUrl)
+                        .url(URL.graphqlUrl)
                         .post(RequestBody.create(MediaType.parse("application/graphql; charset=utf-8"),postBody))
                         .build();
 
@@ -148,6 +148,7 @@ public class DownloadTask extends AsyncTask<Void,Integer,Void> {
             Question question = new Question();
             Article article = new Article();
 
+            question.setQuestion_id(questionBean.getQuestion_id());
             question.setFrontend_question_id(questionBean.getFrontend_question_id());
             question.setArticle_live(questionBean.isArticle_live());
             question.setArticle_slug(questionBean.getArticle_slug());
