@@ -77,7 +77,7 @@ public class HomeActivity extends AppCompatActivity {
 
             initView();
 
-           mQuestionList = DBHelper.queryAllDataOfQuestion();
+            mQuestionList = DBHelper.queryAllDataOfQuestion();
 
             LinearLayoutManager layoutManager = new LinearLayoutManager(this);
             mRvQuestionView.setLayoutManager(layoutManager);
@@ -126,7 +126,6 @@ public class HomeActivity extends AppCompatActivity {
             getWindow().getDecorView().setSystemUiVisibility(
                     View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN |View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
-
     }
 
     private void initToolbar(){

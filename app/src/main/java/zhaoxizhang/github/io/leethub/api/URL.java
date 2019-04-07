@@ -8,4 +8,5 @@ public class URL {
     public static final String problemsTopics = "https://leetcode.com//problems/api/tags/";
     public static final String graphqlUrl = "https://leetcode.com/graphql";
 
+    public static final String DISCUSS_ITEM = "https://leetcode.com/problems/%s/discuss/%d/%s";
 }

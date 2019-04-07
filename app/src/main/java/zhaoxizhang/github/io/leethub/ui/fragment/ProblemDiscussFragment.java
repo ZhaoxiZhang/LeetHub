@@ -47,7 +47,6 @@ public class ProblemDiscussFragment extends Fragment {
 
     private EndlessRecyclerOnScrollListener endlessRecyclerOnScrollListener;
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -58,6 +57,8 @@ public class ProblemDiscussFragment extends Fragment {
         mQuestion = (Question) mIntent.getSerializableExtra("question");
 
         discussAdapter = new DiscussAdapter(getContext(), new ArrayList<Discuss.DataBean.QuestionTopicsListBean.EdgesBean>(0));
+        discussAdapter.setQuestion(mQuestion);
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         mRvProblemDiscuss.setLayoutManager(layoutManager);
         mRvProblemDiscuss.setAdapter(discussAdapter);

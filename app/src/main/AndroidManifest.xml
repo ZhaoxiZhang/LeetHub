@@ -12,14 +12,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/LeetHub">
+        <activity android:name=".ui.activity.DiscussActivity"
+            android:theme="@style/LeetHub.Discuss"></activity>
         <activity
             android:name=".ui.activity.ProblemActivity"
-            android:theme="@style/LeetHub.Problem">
-        </activity>
+            android:theme="@style/LeetHub.Problem"></activity>
         <activity
             android:name=".ui.activity.SearchActivity"
-            android:theme="@style/LeetHub.SearchView">
-        </activity>
+            android:theme="@style/LeetHub.SearchView"></activity>
         <activity
             android:name=".ui.activity.HomeActivity"
             android:theme="@style/LeetHub.Home">
@@ -29,11 +29,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ui.activity.ProblemDetailActivity"
-            android:label="@string/title_activity_question_detail"
-            android:theme="@style/LeetHub.ProblemDetail" />
-        <activity android:name=".ui.activity.ArticleActivity" />
         <activity
             android:name=".ui.activity.ProblemDifficultyActivity"
             android:theme="@style/LeetHub.Difficulty" />

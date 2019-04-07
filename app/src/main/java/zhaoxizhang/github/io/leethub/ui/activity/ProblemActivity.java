@@ -28,10 +28,14 @@ import zhaoxizhang.github.io.leethub.ui.fragment.ProblemSolutionFragment;
 import zhaoxizhang.github.io.leethub.ui.fragment.ProblemSubmissionsFragment;
 
 public class ProblemActivity extends AppCompatActivity {
-    @BindView(R.id.toolbar) Toolbar toolbar;
-    @BindView(R.id.tv_title) TextView mTvTitle;
-    @BindView(R.id.vp_problem) ViewPager mVpProblem;
-    @BindView(R.id.bnv_problem) BottomNavigationView mBnvProblem;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.tv_title)
+    TextView mTvTitle;
+    @BindView(R.id.vp_problem)
+    ViewPager mVpProblem;
+    @BindView(R.id.bnv_problem)
+    BottomNavigationView mBnvProblem;
 
     private Intent mIntent;
     private Question mQuestion;
@@ -66,10 +70,10 @@ public class ProblemActivity extends AppCompatActivity {
                 case R.id.solution:
                     mVpProblem.setCurrentItem(1);
                     return true;
-                case R.id.submissions:
+                case R.id.discuss:
                     mVpProblem.setCurrentItem(2);
                     return true;
-                case R.id.discuss:
+                case R.id.submissions:
                     mVpProblem.setCurrentItem(3);
                     return true;
             }
@@ -105,8 +109,8 @@ public class ProblemActivity extends AppCompatActivity {
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(new ProblemDescriptionFragment());
         fragments.add(new ProblemSolutionFragment());
-        fragments.add(new ProblemSubmissionsFragment());
         fragments.add(new ProblemDiscussFragment());
+        fragments.add(new ProblemSubmissionsFragment());
 
         FragmentPagerAdapter mFragmentPagerAdapter = new FragmentPagerAdapter(getSupportFragmentManager(), fragments);
         mVpProblem.setAdapter(mFragmentPagerAdapter);

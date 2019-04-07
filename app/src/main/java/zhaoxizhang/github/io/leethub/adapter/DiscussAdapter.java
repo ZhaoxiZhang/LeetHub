@@ -1,6 +1,8 @@
 package zhaoxizhang.github.io.leethub.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -20,7 +22,9 @@ import java.util.Locale;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import zhaoxizhang.github.io.leethub.R;
+import zhaoxizhang.github.io.leethub.model.dao.Question;
 import zhaoxizhang.github.io.leethub.model.graphql.Discuss;
+import zhaoxizhang.github.io.leethub.ui.activity.DiscussActivity;
 
 import static android.support.constraint.Constraints.TAG;
 
@@ -32,6 +36,8 @@ public class DiscussAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     private Context mContext;
     private boolean showLoadingMore = false;
     private volatile boolean isDataLoading;
+    private Question question;
+
     static class ContentViewHolder extends RecyclerView.ViewHolder{
         View discussView;
         CircleImageView civAvatar;
@@ -83,7 +89,20 @@ public class DiscussAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         }else{
             View view = LayoutInflater.from(mContext)
                     .inflate(R.layout.item_discuss, parent, false);
-            ContentViewHolder contentViewHolder = new ContentViewHolder(view);
+            final ContentViewHolder contentViewHolder = new ContentViewHolder(view);
+            contentViewHolder.discussView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = contentViewHolder.getAdapterPosition();
+                    Discuss.DataBean.QuestionTopicsListBean.EdgesBean discuss = mDiscussList.get(position);
+                    Intent intent = new Intent(mContext, DiscussActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("discuss", discuss);
+                    bundle.putString("title", question.getTitle());
+                    intent.putExtras(bundle);
+                    mContext.startActivity(intent);
+                }
+            });
             return contentViewHolder;
         }
     }
@@ -162,6 +181,13 @@ public class DiscussAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         this.showLoadingMore = showLoadingMore;
     }
 
+    public Question getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(Question question) {
+        this.question = question;
+    }
 }
 
 

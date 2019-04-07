@@ -1,40 +1,53 @@
 # LeetHub
 
-## 概述
-  一款LeetCode的Android客户端，支持离线查看LeetCode题目以及题解，帮助用户随时随地在Android设备查看LeetCode题目。
-- 支持查看全部题目
-- 支持查看题目官方题解
-- 支持按难度查看题目
-- 支持按分类查看题目
+## Overview
+  An Android client for [LeetCode](https://leetcode.com) that supports offline viewing of LeetCode problems and solutions. Using this application, you can do these:
+- view all problems
+- view the official solution of the problem
+- view problems by difficulty or tag
+- view the discussion of problem
 
 
-## 详情
-下图为软件现状，正在完善中（缺乏设计感，所以界面有点不那么美观）。
 
-应用首次启动，数据加载页
+## Details
+LeetHub is currently under development, you can try [the beta version](https://github.com/ZhaoxiZhang/LeetHub/raw/master/app/release/app-release.apk) in advance.
+
+Application first launch, data loading page
 
 <img src="./pictures/0.png" width="50%" height="50%" />
 
+<hr/>
 
-
-题目列表页
+Problem list page
 
 <img src="./pictures/1.png" width="50%" height="50%" />
 
+<hr/>
 
-
-侧边栏菜单
+Navigation menu
 
 <img src="./pictures/2.png" width="50%" height="50%" />
 
+<hr/>
 
-
-题目详情页
+Problem details page
 
 <img src="./pictures/3.png" width="50%" height="50%" />
 
+<hr/>
 
+Official solution page
 
-题目解析详情页
+<img src="./pictures/4.png" width="50%" height="50%" />
 
-<img src="./pictures/4.png" width="50%" height="60%" />
+<hr/>
+
+Discuss page
+
+<img src="./pictures/5.png" width="50%" height="50%" />
+
+<hr/>
+
+Discuss details page
+
+<img src="./pictures/6.png" width="50%" height="50%" />

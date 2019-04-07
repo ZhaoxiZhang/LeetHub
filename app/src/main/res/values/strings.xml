@@ -38,9 +38,9 @@
     <string name="search_hint">搜索</string>
 
     <string name="transition_search_back" translatable="false">transition_search_back</string>
-    
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    
+
     <string name="under_development">Under Development</string>
 
 
@@ -48,4 +48,5 @@
     <!-- discuss -->
     <string name="problem_discuss_drop_up_description">drop up</string>
     <string name="problem_discuss_view_eye_description">view</string>
+    <string name="discuss_author_update_date">Last Edit</string>
 </resources>

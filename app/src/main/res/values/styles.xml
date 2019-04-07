@@ -51,6 +51,12 @@
         <item name="android:statusBarColor">@color/md_light_background</item>
     </style>
 
+    <style name="LeetHub.Discuss">
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@color/md_light_background</item>
+    </style>
+
     <style name="LeetHubOverlay" parent="@android:style/ThemeOverlay.Material.ActionBar"></style>
 
     <style name="Widget.LeetHub.SearchView" parent="android:style/Widget.Material.SearchView">

@@ -22,7 +22,7 @@
                 android:minHeight="?attr/actionBarSize"
                 android:title="@string/app_name"
                 android:outlineProvider="none"
-                android:elevation="1dp"
+                android:elevation="@dimen/z_app_bar"
                 app:contentInsetStartWithNavigation="0dp"
                 style="@style/Widget.LeetHub.HomeToolbar"/>
 

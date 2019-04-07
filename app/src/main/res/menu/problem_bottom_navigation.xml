@@ -9,12 +9,11 @@
         android:title="@string/problem_solution"
         android:icon="@drawable/ic_solution"/>
     <item
-        android:id="@+id/submissions"
-        android:title="@string/problem_submissions"
-        android:icon="@drawable/ic_submissions"/>
-    <item
         android:id="@+id/discuss"
         android:title="@string/problem_discuss"
         android:icon="@drawable/ic_discuss"/>
-
+    <item
+        android:id="@+id/submissions"
+        android:title="@string/problem_submissions"
+        android:icon="@drawable/ic_submissions"/>
 </menu>

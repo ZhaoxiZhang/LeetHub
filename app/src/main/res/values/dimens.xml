@@ -15,11 +15,11 @@
     <dimen name="discuss_avatar_size">50dp</dimen>
     <dimen name="discuss_item_height">110dp</dimen>
     <dimen name="discuss_title_font_size">16sp</dimen>
-    <dimen name="discuss_author_font_size">14sp</dimen>
-    <dimen name="discuss_createDate_font_size">10sp</dimen>
+    <dimen name="discuss_author_name_font_size">14sp</dimen>
+    <dimen name="discuss_date_font_size">10sp</dimen>
 
 
-    <dimen name="z_app_bar">1dp</dimen>
+    <dimen name="z_app_bar">2dp</dimen>
 
     <dimen name="fab_margin">16dp</dimen>
 
