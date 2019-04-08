@@ -155,8 +155,9 @@ public class DiscussActivity extends AppCompatActivity {
                         mTvTopicTitle.setText(discussItem.getData().getTopic().getTitle());
 
                         String content = discussItem.getData().getTopic().getPost().getContent();
-
-                        markwon.setMarkdown(mTvTopicContent, content.replace("\\n", "\n"));
+                        content = content.replace("\\n", "\n");
+                        content = content.replace("\\t", "\t");
+                        markwon.setMarkdown(mTvTopicContent, content);
                     }
                 });
             }
