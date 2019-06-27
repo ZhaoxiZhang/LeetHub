@@ -8,17 +8,16 @@ import android.view.View;
 
 import com.daimajia.numberprogressbar.NumberProgressBar;
 
-
 import java.util.List;
 
-import zhaoxizhang.github.io.leethub.ui.activity.HomeActivity;
 import zhaoxizhang.github.io.leethub.model.bean.QuestionBean;
 import zhaoxizhang.github.io.leethub.model.dao.Article;
 import zhaoxizhang.github.io.leethub.model.dao.Question;
 import zhaoxizhang.github.io.leethub.model.db.DBHelper;
-import zhaoxizhang.github.io.leethub.util.JsonUtil;
+import zhaoxizhang.github.io.leethub.ui.activity.HomeActivity;
+import zhaoxizhang.github.io.leethub.util.JsonUtils;
 
-public class DownloadTask extends AsyncTask<Void,Integer,Void> {
+public class DownloadTask extends AsyncTask<Void, Integer, Void> {
     private static final String TAG = "DownloadTask";
     private NumberProgressBar numberProgressBar;
 
@@ -138,12 +137,12 @@ public class DownloadTask extends AsyncTask<Void,Integer,Void> {
     @Override
     protected Void doInBackground(Void... params) {
 
-        String questionDetails = JsonUtil.getJson(App.getApplication(), "questions.json");
+        String questionDetails = JsonUtils.getJson(App.getApplication(), "questions.json");
         Log.d(TAG, "doInBackground zyzhang: hello world" + questionDetails);
-        List<QuestionBean>questionsList = JsonUtil.generateObjectFromJsonArray(questionDetails, QuestionBean[].class);
+        List<QuestionBean> questionsList = JsonUtils.generateObjectFromJsonArray(questionDetails, QuestionBean[].class);
 
         int size = questionsList.size();
-        for (int i = 0; i < size; i++){
+        for (int i = 0; i < size; i++) {
             QuestionBean questionBean = questionsList.get(i);
             Question question = new Question();
             Article article = new Article();
@@ -164,7 +163,7 @@ public class DownloadTask extends AsyncTask<Void,Integer,Void> {
 
             DBHelper.insertDataToQuestionTBL(question);
             DBHelper.insertDataToArticleTBL(article);
-            publishProgress((int)((i / (float)size) * 100));
+            publishProgress((int) ((i / (float) size) * 100));
         }
 
         return null;
@@ -181,6 +180,7 @@ public class DownloadTask extends AsyncTask<Void,Integer,Void> {
         super.onPostExecute(aVoid);
         numberProgressBar.setVisibility(View.GONE);
         Intent intent = new Intent(App.getApplication(), HomeActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         App.getApplication().startActivity(intent);
     }
 

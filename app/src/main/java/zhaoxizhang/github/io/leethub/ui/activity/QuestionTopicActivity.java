@@ -22,7 +22,7 @@ public class QuestionTopicActivity extends AppCompatActivity {
     private RecyclerView mRvQuestionTopicView;
     private Toolbar toolbar;
     private TextView mTvTitle;
-    private List<Question>mQuestionList;
+    private List<Question> mQuestionList;
     private Intent mIntent;
     private String mTopicName;
     private QuestionAdapter questionAdapter;
@@ -37,15 +37,16 @@ public class QuestionTopicActivity extends AppCompatActivity {
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         mRvQuestionTopicView.setLayoutManager(layoutManager);
-        questionAdapter = new QuestionAdapter(this, mQuestionList);
+        questionAdapter = new QuestionAdapter(this);
+        questionAdapter.setQuestionList(mQuestionList);
         mRvQuestionTopicView.setAdapter(questionAdapter);
     }
 
-    private void initToolbar(){
+    private void initToolbar() {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        ActionBar actionBar =  getSupportActionBar();
-        if(actionBar != null) {
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setDisplayShowTitleEnabled(false);
         }
@@ -58,9 +59,9 @@ public class QuestionTopicActivity extends AppCompatActivity {
         });
     }
 
-    private void initView(){
+    private void initView() {
         initToolbar();
-        mRvQuestionTopicView =  findViewById(R.id.rv_question_topic);
+        mRvQuestionTopicView = findViewById(R.id.rv_question_topic);
         mTvTitle = findViewById(R.id.tv_title);
 
         mTvTitle.setText(mTopicName);
@@ -71,7 +72,7 @@ public class QuestionTopicActivity extends AppCompatActivity {
         }
     }
 
-    private void initData(){
+    private void initData() {
         mIntent = this.getIntent();
         mTopicName = (String) mIntent.getSerializableExtra("topicName");
         mQuestionList = DBHelper.queryAllQuestionOfSpecificTopic(mTopicName);

@@ -6,7 +6,6 @@ import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
-import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -104,6 +103,7 @@ public class DividerItemDecoration extends RecyclerView.ItemDecoration {
     private int getDividerWidth() {
         return mWidth > 0 ? mWidth : mDivider.getIntrinsicWidth();
     }
+
     private int getDividerHeight() {
         return mHeight > 0 ? mHeight : mDivider.getIntrinsicHeight();
     }

@@ -4,7 +4,7 @@ package zhaoxizhang.github.io.leethub;
 import android.app.Application;
 import android.content.Context;
 
-public class App extends Application{
+public class App extends Application {
     private static App sContext;
 
     @Override
@@ -13,7 +13,7 @@ public class App extends Application{
         sContext = this;
     }
 
-    public static Context getApplication(){
+    public static Context getApplication() {
         return sContext;
     }
 }

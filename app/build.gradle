@@ -39,7 +39,7 @@ dependencies {
     androidTestImplementation 'junit:junit:4.12'
 
     implementation 'com.google.code.gson:gson:2.8.5'
-    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.11.0'
     implementation 'org.greenrobot:greendao:3.2.2'
     implementation 'org.jsoup:jsoup:1.11.3'
     implementation 'com.daimajia.numberprogressbar:library:1.4@aar'

@@ -8,6 +8,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -29,17 +30,20 @@ import butterknife.ButterKnife;
 import zhaoxizhang.github.io.leethub.App;
 import zhaoxizhang.github.io.leethub.DownloadTask;
 import zhaoxizhang.github.io.leethub.R;
-import zhaoxizhang.github.io.leethub.ui.DividerItemDecoration;
 import zhaoxizhang.github.io.leethub.adapter.QuestionAdapter;
 import zhaoxizhang.github.io.leethub.model.dao.Question;
 import zhaoxizhang.github.io.leethub.model.db.DBHelper;
+import zhaoxizhang.github.io.leethub.ui.DividerItemDecoration;
 
 public class HomeActivity extends AppCompatActivity {
     private static final int RC_SEARCH = 0;
 
-    @BindView(R.id.toolbar) Toolbar toolbar;
-    @BindView(R.id.drawer_layout) DrawerLayout mDrawerLayout;
-    @BindView(R.id.nav_view) NavigationView mNavView;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.drawer_layout)
+    DrawerLayout mDrawerLayout;
+    @BindView(R.id.nav_view)
+    NavigationView mNavView;
     NumberProgressBar mNumberProgressBar;
     private ActionBarDrawerToggle mActionBarDrawerToggle;
 
@@ -51,16 +55,16 @@ public class HomeActivity extends AppCompatActivity {
     @BindView(R.id.rv_question_main)
     RecyclerView mRvQuestionView;
     private QuestionAdapter questionAdapter;
-    private List<Question>mQuestionList;
+    private List<Question> mQuestionList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        pref = getSharedPreferences("data",MODE_PRIVATE);
+        pref = getSharedPreferences("data", MODE_PRIVATE);
         editor = pref.edit();
 
-        if (pref.getBoolean("first_launch",true)){
+        if (pref.getBoolean("first_launch", true)) {
             setContentView(R.layout.activity_home_loading);
 
             mNumberProgressBar = findViewById(R.id.number_progress_bar);
@@ -68,10 +72,10 @@ public class HomeActivity extends AppCompatActivity {
             downloadTask = new DownloadTask(mNumberProgressBar);
             downloadTask.execute();
 
-            editor.putBoolean("first_launch",false);
+            editor.putBoolean("first_launch", false);
             editor.apply();
 
-        }else{
+        } else {
             setContentView(R.layout.activity_home);
             ButterKnife.bind(this);
 
@@ -81,7 +85,8 @@ public class HomeActivity extends AppCompatActivity {
 
             LinearLayoutManager layoutManager = new LinearLayoutManager(this);
             mRvQuestionView.setLayoutManager(layoutManager);
-            questionAdapter = new QuestionAdapter(App.getApplication(), mQuestionList);
+            questionAdapter = new QuestionAdapter(this);
+            questionAdapter.setQuestionList(mQuestionList);
             mRvQuestionView.setAdapter(questionAdapter);
             DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL_LIST, new ColorDrawable(getResources().getColor(R.color.md_dark_dividers)));
             dividerItemDecoration.setHeight(1);
@@ -93,7 +98,7 @@ public class HomeActivity extends AppCompatActivity {
                     mDrawerLayout.closeDrawers();
                     Intent intent = new Intent();
 
-                    switch (item.getItemId()){
+                    switch (item.getItemId()) {
                         case R.id.nav_all:
                             break;
                         case R.id.nav_topics:
@@ -115,7 +120,7 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
-    private void initView(){
+    private void initView() {
 
         mNavView.setItemIconTintList(null);
 
@@ -124,16 +129,16 @@ public class HomeActivity extends AppCompatActivity {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             getWindow().getDecorView().setSystemUiVisibility(
-                    View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN |View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+                    View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
     }
 
-    private void initToolbar(){
+    private void initToolbar() {
         //toolbar.setTitleTextColor(getResources().getColor(R.color.background_super_dark));
         setSupportActionBar(toolbar);
     }
 
-    private void setActionBarDrawerToggle(){
+    private void setActionBarDrawerToggle() {
         mActionBarDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         mActionBarDrawerToggle.syncState();
         mDrawerLayout.addDrawerListener(mActionBarDrawerToggle);
@@ -147,19 +152,19 @@ public class HomeActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (mActionBarDrawerToggle.onOptionsItemSelected(item)){
+        if (mActionBarDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case android.R.id.home:
                 mDrawerLayout.openDrawer(GravityCompat.START);
-                break;
+                return true;
             case R.id.menu_search:
                 View searchMenuView = toolbar.findViewById(R.id.menu_search);
                 Bundle options = ActivityOptions.makeSceneTransitionAnimation(this, searchMenuView,
                         getString(R.string.transition_search_back)).toBundle();
                 startActivityForResult(new Intent(this, SearchActivity.class), RC_SEARCH, options);
-                break;
+                return true;
             default:
         }
         return super.onOptionsItemSelected(item);
@@ -177,5 +182,10 @@ public class HomeActivity extends AppCompatActivity {
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         mActionBarDrawerToggle.onConfigurationChanged(newConfig);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

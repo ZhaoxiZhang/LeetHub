@@ -19,8 +19,7 @@
             android:layout_width="@dimen/discuss_avatar_size"
             android:layout_height="@dimen/discuss_avatar_size"
             android:layout_gravity="center"
-            android:src="@color/md_grey_100"
-            app:civ_border_color="@color/md_grey_500"
+            app:civ_border_color="@color/avatar_border"
             app:civ_border_width="1dp" />
 
         <LinearLayout
@@ -47,7 +46,7 @@
 
         <TextView
             android:id="@+id/tv_problem_discuss_drop_up"
-            android:layout_width="60dp"
+            android:layout_width="@dimen/discuss_item_drop_up_width"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:drawableStart="@drawable/ic_arrow_drop_up_24dp"
@@ -55,7 +54,7 @@
 
         <TextView
             android:id="@+id/tv_problem_discuss_view_eye"
-            android:layout_width="70dp"
+            android:layout_width="@dimen/discuss_item_view_eye_width"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:drawableStart="@drawable/ic_view_eye_24dp"

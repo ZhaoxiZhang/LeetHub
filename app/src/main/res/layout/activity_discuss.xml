@@ -95,9 +95,9 @@
                     android:id="@+id/discuss_divider"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:background="@color/md_light_dividers" />
+                    android:layout_marginTop="@dimen/spacing_micro"
+                    android:layout_marginBottom="@dimen/spacing_micro"
+                    android:background="@color/dividers" />
 
                 <TextView
                     android:id="@+id/tv_discuss_topic_content"

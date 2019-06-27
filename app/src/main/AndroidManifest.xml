@@ -13,13 +13,13 @@
         android:supportsRtl="true"
         android:theme="@style/LeetHub">
         <activity android:name=".ui.activity.DiscussActivity"
-            android:theme="@style/LeetHub.Discuss"></activity>
+            android:theme="@style/LeetHub.Discuss">
+
+        </activity>
         <activity
             android:name=".ui.activity.ProblemActivity"
-            android:theme="@style/LeetHub.Problem"></activity>
-        <activity
-            android:name=".ui.activity.SearchActivity"
-            android:theme="@style/LeetHub.SearchView"></activity>
+            android:theme="@style/LeetHub.Problem">
+        </activity>
         <activity
             android:name=".ui.activity.HomeActivity"
             android:theme="@style/LeetHub.Home">
@@ -30,12 +30,23 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".ui.activity.SearchActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/LeetHub.Translucent.Search">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH"/>
+            </intent-filter>
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable"/>
+        </activity>
+        <activity
             android:name=".ui.activity.ProblemDifficultyActivity"
             android:theme="@style/LeetHub.Difficulty" />
         <activity
             android:name=".ui.activity.TopicsActivity"
             android:theme="@style/LeetHub.Topics" />
-        <activity android:name=".ui.activity.QuestionTopicActivity" />
+        <activity android:name=".ui.activity.QuestionTopicActivity"></activity>
     </application>
 
 </manifest>

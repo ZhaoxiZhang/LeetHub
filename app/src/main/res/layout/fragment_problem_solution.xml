@@ -16,10 +16,11 @@
             android:id="@+id/wv_problem_solution"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/margin_6"
+            android:layout_margin="@dimen/margin_micro"
             android:fadingEdge="none"
             android:overScrollMode="never"
             android:scrollbars="none"/>
+
     </android.support.v4.widget.SwipeRefreshLayout>
 
 

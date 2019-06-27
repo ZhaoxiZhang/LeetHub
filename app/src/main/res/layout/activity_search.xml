@@ -11,37 +11,36 @@
         android:id="@+id/scrim"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/md_light_background"/>
+        android:background="@color/scrim" />
 
     <FrameLayout
         android:id="@+id/search_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?android:actionBarSize"
-        android:outlineProvider="bounds"
         android:elevation="@dimen/z_app_bar"
-        android:transitionGroup="false"
-        android:theme="@style/SearchViewTheme">
+        android:outlineProvider="bounds"
+        android:theme="@style/SearchViewTheme"
+        android:transitionGroup="false">
 
         <View
             android:id="@+id/search_background"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/md_light_background"/>
+            android:background="@color/background" />
 
         <SearchView
             android:id="@+id/search_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginEnd="@dimen/padding_normal"
             android:iconifiedByDefault="false"
-            android:transitionGroup="false"/>
+            android:transitionGroup="false" />
 
         <FrameLayout
             android:id="@+id/searchback_container"
             android:layout_width="96dp"
             android:layout_height="match_parent"
-            android:paddingStart="4dp"
-            android:background="@android:color/transparent">
+            android:background="@android:color/transparent"
+            android:paddingStart="4dp">
 
             <ImageButton
                 android:id="@+id/searchback"
@@ -49,7 +48,7 @@
                 android:layout_height="match_parent"
                 android:background="?android:selectableItemBackgroundBorderless"
                 android:src="@drawable/ic_arrow_back_padded"
-                android:transitionName="@string/transition_search_back"/>
+                android:transitionName="@string/transition_search_back" />
         </FrameLayout>
 
     </FrameLayout>
@@ -59,7 +58,41 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="?android:actionBarSize"
+        android:background="@color/background"
         android:elevation="@dimen/z_app_bar">
+
+        <ProgressBar
+            android:id="@android:id/empty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:indeterminateTint="@color/progress_dark"
+            android:indeterminateTintMode="src_in"
+            android:paddingTop="@dimen/spacing_huge"
+            android:paddingBottom="@dimen/spacing_huge"
+            android:visibility="gone" />
+
+        <ViewStub
+            android:id="@+id/stub_no_search_results"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout="@layout/no_search_results" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_search_results"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:scrollbarStyle="outsideOverlay"
+            android:scrollbars="vertical"
+            android:visibility="gone" />
+
+        <View
+            android:id="@+id/results_scrim"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/scrim"
+            android:visibility="gone" />
 
     </FrameLayout>
 

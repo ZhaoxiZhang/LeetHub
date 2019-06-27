@@ -32,14 +32,16 @@ import zhaoxizhang.github.io.leethub.api.graphql.GraphQL;
 import zhaoxizhang.github.io.leethub.model.dao.Question;
 import zhaoxizhang.github.io.leethub.model.graphql.Discuss;
 import zhaoxizhang.github.io.leethub.ui.EndlessRecyclerOnScrollListener;
-import zhaoxizhang.github.io.leethub.util.JsonUtil;
+import zhaoxizhang.github.io.leethub.util.JsonUtils;
 
 import static android.support.constraint.Constraints.TAG;
 import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
 
 public class ProblemDiscussFragment extends Fragment {
-    @BindView(R.id.rv_problem_discuss) RecyclerView mRvProblemDiscuss;
-    @BindView(android.R.id.empty) ProgressBar mPbLoading;
+    @BindView(R.id.rv_problem_discuss)
+    RecyclerView mRvProblemDiscuss;
+    @BindView(android.R.id.empty)
+    ProgressBar mPbLoading;
 
     private Intent mIntent;
     private Question mQuestion;
@@ -70,7 +72,6 @@ public class ProblemDiscussFragment extends Fragment {
                 discussAdapter.setDataLoading(true);
                 discussAdapter.setShowLoadingMore(true);
                 loadData(current_page);
-
             }
         };
         mRvProblemDiscuss.addOnScrollListener(endlessRecyclerOnScrollListener);
@@ -108,7 +109,7 @@ public class ProblemDiscussFragment extends Fragment {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                final Discuss discuss = JsonUtil.generateObjectFromJson(response.body().string(), Discuss.class);
+                final Discuss discuss = JsonUtils.generateObjectFromJson(response.body().string(), Discuss.class);
                 discussAdapter.setDataLoading(false);
                 discussAdapter.setShowLoadingMore(false);
                 getActivity().runOnUiThread(new Runnable() {
@@ -122,10 +123,10 @@ public class ProblemDiscussFragment extends Fragment {
         });
     }
 
-    private void checkEmptyState(){
-        if (discussAdapter.getDataItemCount() == 0){
+    private void checkEmptyState() {
+        if (discussAdapter.getDataItemCount() == 0) {
             mPbLoading.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             mPbLoading.setVisibility(View.GONE);
         }
     }

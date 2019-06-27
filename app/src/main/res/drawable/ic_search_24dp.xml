@@ -6,5 +6,5 @@
     <path
         android:pathData="@string/path_search"
         android:strokeWidth="2"
-        android:strokeColor="@color/background_super_dark" />
+        android:strokeColor="@color/background_dark" />
 </vector>

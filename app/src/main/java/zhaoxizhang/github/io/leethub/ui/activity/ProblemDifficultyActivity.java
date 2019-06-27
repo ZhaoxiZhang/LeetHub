@@ -11,9 +11,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
-
-
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,10 +21,14 @@ import zhaoxizhang.github.io.leethub.adapter.FragmentPagerAdapter;
 import zhaoxizhang.github.io.leethub.ui.fragment.TabFragment;
 
 public class ProblemDifficultyActivity extends AppCompatActivity {
-    @BindView(R.id.toolbar) Toolbar toolbar;
-    @BindView(R.id.tv_title) TextView mTvTitle;
-    @BindView(R.id.tl_problem_difficulty_main) TabLayout mTabLayout;
-    @BindView(R.id.vp_problem_difficulty_main) ViewPager mViewPager;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.tv_title)
+    TextView mTvTitle;
+    @BindView(R.id.tl_problem_difficulty_main)
+    TabLayout mTabLayout;
+    @BindView(R.id.vp_problem_difficulty_main)
+    ViewPager mViewPager;
 
 
     @Override
@@ -47,28 +48,28 @@ public class ProblemDifficultyActivity extends AppCompatActivity {
         });
     }
 
-    private void initToolbar(){
+    private void initToolbar() {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        ActionBar actionBar =  getSupportActionBar();
-        if(actionBar != null) {
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setDisplayShowTitleEnabled(false);
         }
     }
 
-    private void initView(){
+    private void initView() {
         initToolbar();
 
         mTvTitle.setText(getString(R.string.app_name));
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             getWindow().getDecorView().setSystemUiVisibility(
-                    View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN |View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+                    View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
     }
 
-    private void initViewPager(){
+    private void initViewPager() {
         List<String> titles = new ArrayList<>(3);
         titles.add(getString(R.string.tab_question_difficulty_1));
         titles.add(getString(R.string.tab_question_difficulty_2));
@@ -78,7 +79,7 @@ public class ProblemDifficultyActivity extends AppCompatActivity {
         mTabLayout.addTab(mTabLayout.newTab().setText(titles.get(1)));
         mTabLayout.addTab(mTabLayout.newTab().setText(titles.get(2)));
 
-        List<Fragment>fragments = new ArrayList<>();
+        List<Fragment> fragments = new ArrayList<>();
         fragments.add(TabFragment.newInstance(0));
         fragments.add(TabFragment.newInstance(1));
         fragments.add(TabFragment.newInstance(2));

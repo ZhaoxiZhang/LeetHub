@@ -26,8 +26,10 @@ public class ProblemDescriptionFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    @BindView(R.id.tv_problem_detial_tags) TextView mTvProblemTags;
-    @BindView(R.id.wv_problem_detail_content) WebView mWvProblemContent;
+    @BindView(R.id.tv_problem_description_tags)
+    TextView mTvProblemTags;
+    @BindView(R.id.wv_problem_description_content)
+    WebView mWvProblemContent;
 
     private Activity activity;
     private AppCompatActivity mAppCompatActivity;
@@ -108,7 +110,7 @@ public class ProblemDescriptionFragment extends Fragment {
                         case MotionEvent.ACTION_MOVE:
                             int deltaY = y - lastY;
                             int deltaX = x - lastX;
-                            if (Math.abs(deltaX) > Math.abs(deltaY)){
+                            if (Math.abs(deltaX) > Math.abs(deltaY)) {
                                 mWvProblemContent.getParent().requestDisallowInterceptTouchEvent(false);
                             }
                         default:

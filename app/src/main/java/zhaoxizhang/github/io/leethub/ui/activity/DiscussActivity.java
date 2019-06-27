@@ -2,11 +2,10 @@ package zhaoxizhang.github.io.leethub.ui.activity;
 
 import android.content.Intent;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -34,25 +33,32 @@ import ru.noties.markwon.Markwon;
 import zhaoxizhang.github.io.leethub.R;
 import zhaoxizhang.github.io.leethub.api.URL;
 import zhaoxizhang.github.io.leethub.api.graphql.GraphQL;
-import zhaoxizhang.github.io.leethub.model.dao.Question;
 import zhaoxizhang.github.io.leethub.model.graphql.Discuss;
 import zhaoxizhang.github.io.leethub.model.graphql.DiscussItem;
-import zhaoxizhang.github.io.leethub.util.JsonUtil;
-
-import static android.support.constraint.Constraints.TAG;
+import zhaoxizhang.github.io.leethub.util.JsonUtils;
 
 public class DiscussActivity extends AppCompatActivity {
 
-    @BindView(R.id.toolbar) Toolbar toolbar;
-    @BindView(R.id.tv_title) TextView tvTitle;
-    @BindView(R.id.civ_discuss_avatar) CircleImageView mCivAvatar;
-    @BindView(R.id.tv_discuss_author_name) TextView mTvAuthorName;
-    @BindView(R.id.tv_discuss_update_date) TextView mTvUpdateDate;
-    @BindView(R.id.tv_discuss_last_edit) TextView mTvLastEdit;
-    @BindView(R.id.tv_discuss_topic_title) TextView mTvTopicTitle;
-    @BindView(R.id.tv_discuss_topic_content) TextView mTvTopicContent;
-    @BindView(android.R.id.empty) ProgressBar mPbLoading;
-    @BindView(R.id.discuss_divider) View discussDivider;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.tv_title)
+    TextView tvTitle;
+    @BindView(R.id.civ_discuss_avatar)
+    CircleImageView mCivAvatar;
+    @BindView(R.id.tv_discuss_author_name)
+    TextView mTvAuthorName;
+    @BindView(R.id.tv_discuss_update_date)
+    TextView mTvUpdateDate;
+    @BindView(R.id.tv_discuss_last_edit)
+    TextView mTvLastEdit;
+    @BindView(R.id.tv_discuss_topic_title)
+    TextView mTvTopicTitle;
+    @BindView(R.id.tv_discuss_topic_content)
+    TextView mTvTopicContent;
+    @BindView(android.R.id.empty)
+    ProgressBar mPbLoading;
+    @BindView(R.id.discuss_divider)
+    View discussDivider;
 
     private Intent mIntent;
     private Discuss.DataBean.QuestionTopicsListBean.EdgesBean discuss;
@@ -74,7 +80,7 @@ public class DiscussActivity extends AppCompatActivity {
         loadData(topicId);
     }
 
-    private void initView(){
+    private void initView() {
         mPbLoading.setVisibility(View.VISIBLE);
         mTvLastEdit.setVisibility(View.INVISIBLE);
         discussDivider.setVisibility(View.INVISIBLE);
@@ -86,11 +92,11 @@ public class DiscussActivity extends AppCompatActivity {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             getWindow().getDecorView().setSystemUiVisibility(
-                    View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN |View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+                    View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
     }
 
-    private void initToolbar(){
+    private void initToolbar() {
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -127,7 +133,7 @@ public class DiscussActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                final DiscussItem discussItem = JsonUtil.generateObjectFromJson(response.body().string(), DiscussItem.class);
+                final DiscussItem discussItem = JsonUtils.generateObjectFromJson(response.body().string(), DiscussItem.class);
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {

@@ -7,15 +7,15 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 import java.util.List;
 
-public class FragmentPagerAdapter extends FragmentStatePagerAdapter{
-    private List<Fragment>mFragments;
-    private List<String>mTitles;
+public class FragmentPagerAdapter extends FragmentStatePagerAdapter {
+    private List<Fragment> mFragments;
+    private List<String> mTitles;
 
-    public FragmentPagerAdapter(FragmentManager fragmentManager, List<Fragment>fragments){
+    public FragmentPagerAdapter(FragmentManager fragmentManager, List<Fragment> fragments) {
         this(fragmentManager, fragments, null);
     }
 
-    public FragmentPagerAdapter(FragmentManager fragmentManager, List<Fragment>fragments, List<String>titles){
+    public FragmentPagerAdapter(FragmentManager fragmentManager, List<Fragment> fragments, List<String> titles) {
         super(fragmentManager);
         mFragments = fragments;
         mTitles = titles;

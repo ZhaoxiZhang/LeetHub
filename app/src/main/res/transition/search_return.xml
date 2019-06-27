@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<transitionSet xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <fade
+        android:duration="120"
+        android:interpolator="@android:interpolator/fast_out_linear_in">
+        <targets>
+            <target android:targetId="@id/search_view" />
+        </targets>
+    </fade>
+
+    <fade
+        android:duration="160"
+        android:interpolator="@android:interpolator/fast_out_linear_in"
+        android:startDelay="300">
+        <targets>
+            <target android:targetId="@id/search_background" />
+        </targets>
+    </fade>
+
+    <fade
+        android:duration="400"
+        android:interpolator="@android:interpolator/fast_out_linear_in">
+        <targets>
+            <target android:targetId="@id/scrim" />
+        </targets>
+    </fade>
+
+    <fade
+        android:duration="400"
+        android:interpolator="@android:interpolator/fast_out_slow_in">
+        <targets>
+            <target android:targetId="@android:id/navigationBarBackground" />
+        </targets>
+    </fade>
+
+</transitionSet>

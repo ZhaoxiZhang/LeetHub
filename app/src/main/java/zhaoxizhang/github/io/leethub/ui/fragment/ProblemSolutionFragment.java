@@ -26,9 +26,13 @@ import zhaoxizhang.github.io.leethub.model.db.DBHelper;
 
 
 public class ProblemSolutionFragment extends Fragment {
-    @BindView(R.id.srl_problem_solution_container) SwipeRefreshLayout mSrlProblemSolutionContainer;
-    @BindView(R.id.wv_problem_solution) WebView mWvArticleSolution;
-    @Nullable @BindView(R.id.no_solution) TextView mTvNoSolution;
+    @BindView(R.id.srl_problem_solution_container)
+    SwipeRefreshLayout mSrlProblemSolutionContainer;
+    @BindView(R.id.wv_problem_solution)
+    WebView mWvArticleSolution;
+    @Nullable
+    @BindView(R.id.no_solution)
+    TextView mTvNoSolution;
 
     private Intent mIntent;
     private Question mQuestion;
@@ -45,7 +49,7 @@ public class ProblemSolutionFragment extends Fragment {
         mQuestion = (Question) mIntent.getSerializableExtra("question");
 
         boolean articleLive = mQuestion.getArticle_live();
-        if (articleLive){
+        if (articleLive) {
             String articleContent = DBHelper.queryArticleContent(mQuestion.getFrontend_question_id()).get(0).getContent();
             final String articleHTML = HtmlData.ArticleHTMLFirst + articleContent + HtmlData.ArticleHTMLLast;
 
@@ -70,12 +74,12 @@ public class ProblemSolutionFragment extends Fragment {
                 }
             });
 
-            mWvArticleSolution.setWebChromeClient(new WebChromeClient(){
+            mWvArticleSolution.setWebChromeClient(new WebChromeClient() {
                 @Override
                 public void onProgressChanged(WebView view, int newProgress) {
-                    if (newProgress == 100){
+                    if (newProgress == 100) {
                         mSrlProblemSolutionContainer.setRefreshing(false);
-                    }else if (!mSrlProblemSolutionContainer.isRefreshing()){
+                    } else if (!mSrlProblemSolutionContainer.isRefreshing()) {
                         mSrlProblemSolutionContainer.setRefreshing(true);
                     }
                 }
@@ -106,10 +110,10 @@ public class ProblemSolutionFragment extends Fragment {
                     return false;
                 }
             });
-        }else{
-            if (mTvNoSolution == null){
+        } else {
+            if (mTvNoSolution == null) {
                 final ViewStub stub = view.findViewById(R.id.stub_no_solution);
-                mTvNoSolution = (TextView)stub.inflate();
+                mTvNoSolution = (TextView) stub.inflate();
             }
         }
 

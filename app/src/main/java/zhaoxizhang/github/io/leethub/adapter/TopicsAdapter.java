@@ -11,26 +11,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-
-
 import java.util.List;
 
 import zhaoxizhang.github.io.leethub.R;
-import zhaoxizhang.github.io.leethub.ui.activity.QuestionTopicActivity;
 import zhaoxizhang.github.io.leethub.model.bean.LeetTopicsBean;
+import zhaoxizhang.github.io.leethub.ui.activity.QuestionTopicActivity;
 
-public class TopicsAdapter extends RecyclerView.Adapter<TopicsAdapter.ViewHolder>{
+public class TopicsAdapter extends RecyclerView.Adapter<TopicsAdapter.ViewHolder> {
     private static final String TAG = "TopicsAdapter";
-    private List<LeetTopicsBean.TopicsBean>mTopicsList;
+    private List<LeetTopicsBean.TopicsBean> mTopicsList;
     private Context mContext;
 
 
-    static class ViewHolder extends RecyclerView.ViewHolder{
+    static class ViewHolder extends RecyclerView.ViewHolder {
         View topicView;
         TextView topicName;
         TextView questionAmount;
 
-        public ViewHolder(View view){
+        public ViewHolder(View view) {
             super(view);
             topicView = view;
             topicName = view.findViewById(R.id.tv_topic_name);
@@ -38,7 +36,7 @@ public class TopicsAdapter extends RecyclerView.Adapter<TopicsAdapter.ViewHolder
         }
     }
 
-    public TopicsAdapter(Context context, List<LeetTopicsBean.TopicsBean>topicsList){
+    public TopicsAdapter(Context context, List<LeetTopicsBean.TopicsBean> topicsList) {
         mContext = context;
         mTopicsList = topicsList;
     }
@@ -67,7 +65,7 @@ public class TopicsAdapter extends RecyclerView.Adapter<TopicsAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        
+
         LeetTopicsBean.TopicsBean topic = mTopicsList.get(position);
         holder.topicName.setText(topic.getName());
         holder.questionAmount.setText(String.valueOf(topic.getQuestions().size()));

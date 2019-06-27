@@ -28,17 +28,17 @@ import zhaoxizhang.github.io.leethub.ui.activity.DiscussActivity;
 
 import static android.support.constraint.Constraints.TAG;
 
-public class DiscussAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+public class DiscussAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private final static int TYPE_CONTENT = 0;
     private final static int TYPE_LOADING_MORE = 1;
 
-    private List<Discuss.DataBean.QuestionTopicsListBean.EdgesBean>mDiscussList;
+    private List<Discuss.DataBean.QuestionTopicsListBean.EdgesBean> mDiscussList;
     private Context mContext;
     private boolean showLoadingMore = false;
     private volatile boolean isDataLoading;
     private Question question;
 
-    static class ContentViewHolder extends RecyclerView.ViewHolder{
+    static class ContentViewHolder extends RecyclerView.ViewHolder {
         View discussView;
         CircleImageView civAvatar;
         TextView tvTitle;
@@ -47,7 +47,7 @@ public class DiscussAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         TextView tvDropUp;
         TextView tvViewEye;
 
-        public ContentViewHolder(View view){
+        public ContentViewHolder(View view) {
             super(view);
             discussView = view;
             civAvatar = view.findViewById(R.id.civ_problem_discuss_avatar);
@@ -59,15 +59,16 @@ public class DiscussAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         }
     }
 
-    static class LoadingMoreHolder extends RecyclerView.ViewHolder{
+    static class LoadingMoreHolder extends RecyclerView.ViewHolder {
         ProgressBar progressBar;
-        public LoadingMoreHolder(View view){
+
+        public LoadingMoreHolder(View view) {
             super(view);
-            progressBar = (ProgressBar)view;
+            progressBar = (ProgressBar) view;
         }
     }
 
-    public DiscussAdapter(Context context, List<Discuss.DataBean.QuestionTopicsListBean.EdgesBean>discussList){
+    public DiscussAdapter(Context context, List<Discuss.DataBean.QuestionTopicsListBean.EdgesBean> discussList) {
         mContext = context;
         mDiscussList = discussList;
     }
@@ -75,7 +76,7 @@ public class DiscussAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     @Override
     public int getItemViewType(int position) {
         if (position < getDataItemCount()
-            && getDataItemCount() > 0){
+                && getDataItemCount() > 0) {
             return TYPE_CONTENT;
         }
         return TYPE_LOADING_MORE;
@@ -84,9 +85,9 @@ public class DiscussAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        if (viewType == TYPE_LOADING_MORE){
+        if (viewType == TYPE_LOADING_MORE) {
             return new LoadingMoreHolder(LayoutInflater.from(mContext).inflate(R.layout.infinite_loading, parent, false));
-        }else{
+        } else {
             View view = LayoutInflater.from(mContext)
                     .inflate(R.layout.item_discuss, parent, false);
             final ContentViewHolder contentViewHolder = new ContentViewHolder(view);
@@ -109,23 +110,23 @@ public class DiscussAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
-        if (getItemViewType(position) == TYPE_LOADING_MORE){
-            bindLoadingViewHolder((LoadingMoreHolder)viewHolder, position);
-        }else{
+        if (getItemViewType(position) == TYPE_LOADING_MORE) {
+            bindLoadingViewHolder((LoadingMoreHolder) viewHolder, position);
+        } else {
             Discuss.DataBean.QuestionTopicsListBean.EdgesBean.NodeBean nodeBean = mDiscussList.get(position).getNode();
-            ContentViewHolder contentViewHolder = (ContentViewHolder)viewHolder;
+            ContentViewHolder contentViewHolder = (ContentViewHolder) viewHolder;
             contentViewHolder.tvAuthor.setText(nodeBean.getPost().getAuthor().getUsername());
             contentViewHolder.tvTitle.setText(nodeBean.getTitle());
             contentViewHolder.tvDropUp.setText(String.valueOf(nodeBean.getPost().getVoteCount()));
 
             int viewCount = nodeBean.getViewCount();
-            if (viewCount >= 1000){
+            if (viewCount >= 1000) {
                 contentViewHolder.tvViewEye.setText(viewCount / 1000 + "." + viewCount / 100 % 10 + "k");
-            }else{
+            } else {
                 contentViewHolder.tvViewEye.setText(String.valueOf(viewCount));
             }
 
-            SimpleDateFormat format =  new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String time = format.format(nodeBean.getPost().getCreationDate() * 1000L);
             Date date = null;
             try {
@@ -148,18 +149,18 @@ public class DiscussAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         return getDataItemCount() + (showLoadingMore ? 1 : 0);
     }
 
-    public int getDataItemCount(){
+    public int getDataItemCount() {
         return mDiscussList == null ? 0 : mDiscussList.size();
     }
 
-    public void insertDiscuss(List<Discuss.DataBean.QuestionTopicsListBean.EdgesBean>discussList){
+    public void insertDiscuss(List<Discuss.DataBean.QuestionTopicsListBean.EdgesBean> discussList) {
         Log.d(TAG, "insertDiscuss: " + discussList.size());
         mDiscussList.addAll(discussList);
         notifyDataSetChanged();
     }
 
-    private void bindLoadingViewHolder(LoadingMoreHolder holder, int position){
-        Log.d(TAG, "bindLoadingViewHolder: " + "isDataLoading = "  + isDataLoading);
+    private void bindLoadingViewHolder(LoadingMoreHolder holder, int position) {
+        Log.d(TAG, "bindLoadingViewHolder: " + "isDataLoading = " + isDataLoading);
         holder.progressBar.setVisibility(position > 0
                 && isDataLoading
                 ? View.VISIBLE : View.INVISIBLE);

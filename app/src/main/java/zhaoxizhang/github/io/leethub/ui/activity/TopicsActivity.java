@@ -18,7 +18,7 @@ import zhaoxizhang.github.io.leethub.App;
 import zhaoxizhang.github.io.leethub.R;
 import zhaoxizhang.github.io.leethub.adapter.TopicsAdapter;
 import zhaoxizhang.github.io.leethub.model.bean.LeetTopicsBean;
-import zhaoxizhang.github.io.leethub.util.JsonUtil;
+import zhaoxizhang.github.io.leethub.util.JsonUtils;
 
 public class TopicsActivity extends AppCompatActivity {
     private static final String TAG = "TopicsActivity";
@@ -42,13 +42,13 @@ public class TopicsActivity extends AppCompatActivity {
         mRvTopicsView.setAdapter(topicsAdapter);
     }
 
-    private void initData(){
-        String topicsString = JsonUtil.getJson(App.getApplication(), "topics.json");
+    private void initData() {
+        String topicsString = JsonUtils.getJson(App.getApplication(), "topics.json");
 
-        LeetTopicsBean topicsBean = JsonUtil.generateObjectFromJson(topicsString, LeetTopicsBean.class);
+        LeetTopicsBean topicsBean = JsonUtils.generateObjectFromJson(topicsString, LeetTopicsBean.class);
         mTopicsList = topicsBean.getTopics();
 
-        Comparator<LeetTopicsBean.TopicsBean>topicComparator = new Comparator<LeetTopicsBean.TopicsBean>() {
+        Comparator<LeetTopicsBean.TopicsBean> topicComparator = new Comparator<LeetTopicsBean.TopicsBean>() {
             @Override
             public int compare(LeetTopicsBean.TopicsBean o1, LeetTopicsBean.TopicsBean o2) {
                 return o1.getName().compareTo(o2.getName());
@@ -57,11 +57,11 @@ public class TopicsActivity extends AppCompatActivity {
         Collections.sort(mTopicsList, topicComparator);
     }
 
-    private void initToolbar(){
+    private void initToolbar() {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        ActionBar actionBar =  getSupportActionBar();
-        if(actionBar != null) {
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setDisplayShowTitleEnabled(false);
         }
@@ -74,7 +74,7 @@ public class TopicsActivity extends AppCompatActivity {
         });
     }
 
-    private void initView(){
+    private void initView() {
         initToolbar();
 
         mRvTopicsView = findViewById(R.id.rv_topics);

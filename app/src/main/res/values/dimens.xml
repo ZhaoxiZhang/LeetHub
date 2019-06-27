@@ -1,25 +1,37 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- toolbar -->
+    <dimen name="toolbar_title_font_size">20sp</dimen>
+
     <!-- home -->
     <!-- NavigationBar -->
     <dimen name="nav_header_height">160dp</dimen>
     <dimen name="nav_normal_padding">@dimen/padding_normal</dimen>
     <dimen name="nav_header_avatar_size">85dp</dimen>
     <dimen name="nav_header_hint_width">@dimen/nav_header_avatar_size</dimen>
+    <dimen name="nav_header_hint_font_size">14sp</dimen>
+    <!-- main -->
+    <dimen name="question_text_number_font_size">24sp</dimen>
+    <dimen name="question_text_font_size">20sp</dimen>
 
     <!-- problem -->
     <!-- keep BottomNavigationView text size unchanged -->
     <dimen name="design_bottom_navigation_text_size" tools:override="true">@dimen/font_12</dimen>
     <dimen name="design_bottom_navigation_active_text_size" tools:override="true">@dimen/font_12</dimen>
+    <!-- description -->
+    <dimen name="description_title_font_size">24sp</dimen>
+    <dimen name="description_tags_font_size">14sp</dimen>
     <!-- discuss -->
     <dimen name="discuss_avatar_size">50dp</dimen>
     <dimen name="discuss_item_height">110dp</dimen>
     <dimen name="discuss_title_font_size">16sp</dimen>
     <dimen name="discuss_author_name_font_size">14sp</dimen>
     <dimen name="discuss_date_font_size">10sp</dimen>
+    <dimen name="discuss_item_drop_up_width">60dp</dimen>
+    <dimen name="discuss_item_view_eye_width">70dp</dimen>
 
-
-    <dimen name="z_app_bar">2dp</dimen>
+    <!-- Z-axis elevations -->
+    <dimen name="z_app_bar">4dp</dimen>
 
     <dimen name="fab_margin">16dp</dimen>
 
@@ -56,10 +68,16 @@
     <dimen name="button_height_36">36dp</dimen>
     <dimen name="button_width_88">88dp</dimen>
 
-    <dimen name="margin_small">10dp</dimen>
-    <dimen name="margin_normal">16dp</dimen>
-
+    <dimen name="spacing_micro">4dp</dimen>
+    <dimen name="spacing_normal">8dp</dimen>
+    <dimen name="spacing_large">32dp</dimen>
+    <dimen name="spacing_xlarge">48dp</dimen>
+    <dimen name="spacing_huge">64dp</dimen>
     <dimen name="padding_small">10dp</dimen>
     <dimen name="padding_normal">16dp</dimen>
+    <dimen name="padding_larget">24dp</dimen>
+    <dimen name="margin_micro">6dp</dimen>
+    <dimen name="margin_small">10dp</dimen>
+    <dimen name="margin_normal">16dp</dimen>
 
 </resources>

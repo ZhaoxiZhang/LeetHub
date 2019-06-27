@@ -4,7 +4,7 @@
     <style name="LeetHub" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:colorPrimary">@color/colorPrimary</item>
         <item name="android:colorBackground">@color/colorPrimaryDark</item>
-        <item name="android:navigationBarColor">@color/background_super_dark</item>
+        <item name="android:navigationBarColor">@color/background_dark</item>
 
     </style>
 
@@ -16,21 +16,21 @@
         <item name="android:windowTranslucentStatus">false</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@color/colorPrimaryDark</item>
-        <item name="colorControlNormal">@color/background_super_dark</item>
+        <item name="colorControlNormal">@color/background_dark</item>
     </style>
 
     <style name="LeetHub.ProblemDetail">
         <item name="android:windowTranslucentStatus">false</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@color/colorPrimaryDark</item>
-        <item name="colorControlNormal">@color/background_super_dark</item>
+        <item name="colorControlNormal">@color/background_dark</item>
     </style>
 
     <style name="LeetHub.Problem">
         <item name="android:windowTranslucentStatus">false</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@color/colorPrimaryDark</item>
-        <item name="colorControlNormal">@color/background_super_dark</item>
+        <item name="colorControlNormal">@color/background_dark</item>
     </style>
 
     <style name="LeetHub.Topics">
@@ -57,6 +57,27 @@
         <item name="android:statusBarColor">@color/md_light_background</item>
     </style>
 
+    <style name="LeetHub.Translucent">
+        <item name="android:windowBackground">@color/scrim</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+    </style>
+
+    <style name="SearchWindowAnimations">
+        <item name="android:windowEnterAnimation">@null</item>
+        <item name="android:windowExitAnimation">@anim/fade_out_rapidly</item>
+    </style>
+
+    <style name="LeetHub.Translucent.Search">
+        <item name="android:windowAnimationStyle">@style/SearchWindowAnimations</item>
+        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+        <item name="android:navigationBarColor">@color/colorPrimaryDark</item>
+    </style>
+
     <style name="LeetHubOverlay" parent="@android:style/ThemeOverlay.Material.ActionBar"></style>
 
     <style name="Widget.LeetHub.SearchView" parent="android:style/Widget.Material.SearchView">
@@ -77,14 +98,14 @@
         <item name="android:letterSpacing">0.2</item>
     </style>
 
-    <style name="LeetHubLightOverlay" parent="@android:style/ThemeOverlay.Material.Light"></style>
+    <style name="LeetHubLightOverlay" parent="@android:style/ThemeOverlay.Material.ActionBar"></style>
 
     <style name="Widget.LeetHub" parent="android:Widget"></style>
 
     <style name="Widget.LeetHub.HomeToolbar" parent="Widget.LeetHub.Toolbar.SmallCapsTitle">
         <item name="android:textColor">@color/text_primary_dark</item>
-        <item name="android:elevation">@dimen/z_app_bar</item>
-        <item name="colorControlNormal">@color/background_super_dark</item>
+        <item name="android:elevation">0dp</item>
+        <item name="colorControlNormal">@color/background_dark</item>
     </style>
 
     <style name="Widget.LeetHub.Toolbar">
@@ -92,11 +113,26 @@
         <item name="android:elevation">@dimen/z_app_bar</item>
         <item name="android:theme">@style/LeetHubLightOverlay</item>
         <item name="android:textColor">@color/text_primary_dark</item>
-        <item name="colorControlNormal">@color/background_super_dark</item>
+        <item name="colorControlNormal">@color/background_dark</item>
     </style>
 
     <style name="Widget.LeetHub.Toolbar.SmallCapsTitle">
         <item name="android:titleTextAppearance">@style/TextAppearance.ToolbarTitleSmallCaps</item>
     </style>
 
+    <style name="NumberProgressBar">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+
+        <item name="progress_max">100</item>
+        <item name="progress_current">0</item>
+
+        <item name="progress_unreached_color">#CCCCCC</item>
+        <item name="progress_reached_color">@color/background_dark</item>
+        <item name="progress_text_size">10sp</item>
+        <item name="progress_text_color">@color/text_primary_dark</item>
+
+        <item name="progress_reached_bar_height">1.5dp</item>
+        <item name="progress_unreached_bar_height">0.75dp</item>
+    </style>
 </resources>

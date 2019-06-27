@@ -4,12 +4,18 @@
     <color name="colorPrimaryDark">@color/colorPrimary</color>
     <color name="colorAccent">@color/md_blue_400</color>
 
+    <color name="background">@color/colorPrimary</color>
+    <color name="background_light">@color/md_white_1000</color>
+    <color name="background_dark">@color/md_grey_800</color>
     <color name="text_primary_dark">@color/md_grey_800</color>
-    <color name="background_super_dark">@color/md_grey_800</color>
+    <color name="text_light">@color/md_white_1000</color>
+    <color name="progress_dark">@color/md_grey_700</color>
+    <color name="dividers">@color/md_light_dividers</color>
+    <color name="avatar_border">@color/md_grey_500</color>
 
     <!-- home -->
-    <color name="text_problem_number">@color/md_grey_700</color>
-    <color name="text_problem_title">#0088cc</color>
+    <color name="question_text_number">@color/text_primary_dark</color>
+    <color name="question_text_title">#0088cc</color>
     <color name="question_difficulty_easy">#5cb85c</color>
     <color name="question_difficulty_medium">#f0ad4e</color>
     <color name="question_difficulty_hard">#d9534f</color>
@@ -19,11 +25,10 @@
     <color name="bnv_checked">@color/md_light_primary_icon</color>
     <color name="bnv_unchecked">@color/md_grey_400</color>
 
-    <!-- problem -->
-    <color name="progress_dark">@color/md_grey_700</color>
-
     <!-- problem_difficulty -->
 
+    <!-- search -->
+    <color name="scrim">@color/transparent</color>
 
     <color name="md_light_primary_icon">#8A000000</color>
     <color name="md_light_primary_text">#DE000000</color>

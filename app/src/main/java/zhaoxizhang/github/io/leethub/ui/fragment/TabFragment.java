@@ -11,17 +11,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-
-
-
 import java.util.List;
 
 import zhaoxizhang.github.io.leethub.App;
 import zhaoxizhang.github.io.leethub.R;
-import zhaoxizhang.github.io.leethub.ui.DividerItemDecoration;
 import zhaoxizhang.github.io.leethub.adapter.QuestionAdapter;
 import zhaoxizhang.github.io.leethub.model.dao.Question;
 import zhaoxizhang.github.io.leethub.model.db.DBHelper;
+import zhaoxizhang.github.io.leethub.ui.DividerItemDecoration;
 
 public class TabFragment extends Fragment {
     private static final String TAB_POSITION = "tab_position";
@@ -30,7 +27,7 @@ public class TabFragment extends Fragment {
     private List<Question> mQuestionList;
     private QuestionAdapter questionAdapter;
 
-    public static TabFragment newInstance(int tabPosition){
+    public static TabFragment newInstance(int tabPosition) {
         TabFragment tabFragment = new TabFragment();
 
         Bundle args = new Bundle();
@@ -54,12 +51,13 @@ public class TabFragment extends Fragment {
         return view;
     }
 
-    private void initView(View view){
+    private void initView(View view) {
         mRvTabView = view.findViewById(R.id.rv_tab_question_item);
         mRvTabView.setLayoutManager(new LinearLayoutManager(App.getApplication()));
 
         mQuestionList = DBHelper.queryAllQuestionOfSpecificDifficulty(tabPosition + 1);
-        questionAdapter = new QuestionAdapter(App.getApplication(),mQuestionList);
+        questionAdapter = new QuestionAdapter(getActivity());
+        questionAdapter.setQuestionList(mQuestionList);
         mRvTabView.setAdapter(questionAdapter);
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL_LIST, new ColorDrawable(getResources().getColor(R.color.md_dark_dividers)));

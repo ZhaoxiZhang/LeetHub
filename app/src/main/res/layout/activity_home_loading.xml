@@ -9,8 +9,7 @@
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:layout_gravity="center"
-        style="@style/NumberProgressBar_Beauty_Red"
+        style="@style/NumberProgressBar"
         custom:progress_text_size="20sp"/>
-
 
 </LinearLayout>
