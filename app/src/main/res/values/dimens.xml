@@ -30,6 +30,9 @@
     <dimen name="discuss_item_drop_up_width">60dp</dimen>
     <dimen name="discuss_item_view_eye_width">70dp</dimen>
 
+    <!-- Topic -->
+    <dimen name="topic_item_element_font_size">20sp</dimen>
+
     <!-- Z-axis elevations -->
     <dimen name="z_app_bar">4dp</dimen>
 
@@ -61,7 +64,7 @@
     <!-- typical sizes of views -->
     <dimen name="cardview_height_large">100dp</dimen>
     <dimen name="cardview_height_normal">80dp</dimen>
-    <dimen name="cardview_height_small">70dp</dimen>
+    <dimen name="cardview_height_small">60dp</dimen>
 
     <dimen name="button_height_50">50dp</dimen>
     <dimen name="button_height_48">48dp</dimen>
@@ -79,5 +82,6 @@
     <dimen name="margin_micro">6dp</dimen>
     <dimen name="margin_small">10dp</dimen>
     <dimen name="margin_normal">16dp</dimen>
+    <dimen name="margin_large">20dp</dimen>
 
 </resources>

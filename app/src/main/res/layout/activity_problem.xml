@@ -21,7 +21,6 @@
         android:id="@+id/bnv_problem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:background="@color/colorPrimary"
         android:elevation="@dimen/z_app_bar"
         app:itemIconTint="@drawable/problem_bottom_navigation_selector"

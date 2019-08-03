@@ -30,6 +30,10 @@
     <!-- search -->
     <color name="scrim">@color/transparent</color>
 
+    <!-- Topics -->
+    <color name="topic_title">#0088cc</color>
+    <color name="topic_question_amount">@color/text_primary_dark</color>
+
     <color name="md_light_primary_icon">#8A000000</color>
     <color name="md_light_primary_text">#DE000000</color>
     <color name="md_light_secondary">#8A000000</color>

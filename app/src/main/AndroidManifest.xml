@@ -46,7 +46,6 @@
         <activity
             android:name=".ui.activity.TopicsActivity"
             android:theme="@style/LeetHub.Topics" />
-        <activity android:name=".ui.activity.QuestionTopicActivity"></activity>
     </application>
 
 </manifest>

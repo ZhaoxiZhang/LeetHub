@@ -1,5 +1,6 @@
 package zhaoxizhang.github.io.leethub.ui.activity;
 
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -18,6 +19,7 @@ import zhaoxizhang.github.io.leethub.App;
 import zhaoxizhang.github.io.leethub.R;
 import zhaoxizhang.github.io.leethub.adapter.TopicsAdapter;
 import zhaoxizhang.github.io.leethub.model.bean.LeetTopicsBean;
+import zhaoxizhang.github.io.leethub.ui.DividerItemDecoration;
 import zhaoxizhang.github.io.leethub.util.JsonUtils;
 
 public class TopicsActivity extends AppCompatActivity {
@@ -40,6 +42,9 @@ public class TopicsActivity extends AppCompatActivity {
         mRvTopicsView.setLayoutManager(layoutManager);
         topicsAdapter = new TopicsAdapter(App.getApplication(), mTopicsList);
         mRvTopicsView.setAdapter(topicsAdapter);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL_LIST, new ColorDrawable(getResources().getColor(R.color.md_dark_dividers)));
+        dividerItemDecoration.setHeight(1);
+        mRvTopicsView.addItemDecoration(dividerItemDecoration);
     }
 
     private void initData() {

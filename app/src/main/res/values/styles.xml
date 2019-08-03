@@ -43,6 +43,7 @@
         <item name="android:windowTranslucentStatus">false</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+        <item name="colorControlNormal">@color/background_dark</item>
     </style>
 
     <style name="LeetHub.SearchView">
